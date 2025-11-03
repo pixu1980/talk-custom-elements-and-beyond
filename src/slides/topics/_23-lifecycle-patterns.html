@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Lazy Initialization</h4>
-    <pre><code class="language-javascript">class LazyComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class LazyComponent extends HTMLDivElement {
   constructor() {
     super();
     this._initialized = false;
@@ -52,7 +53,8 @@
   </section>
   <section>
     <h4>Cleanup Management</h4>
-    <pre><code class="language-javascript">class ManagedComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class ManagedComponent extends HTMLDivElement {
   constructor() {
     super();
     this._cleanupFunctions = [];
@@ -111,7 +113,8 @@
   </section>
   <section>
     <h4>Reconnection Handling</h4>
-    <pre><code class="language-javascript">class ReconnectableComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class ReconnectableComponent extends HTMLDivElement {
   constructor() {
     super();
     this._connectionCount = 0;
@@ -167,7 +170,8 @@
   </section>
   <section>
     <h4>Adopted Callback Pattern</h4>
-    <pre><code class="language-javascript">class PortableComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class PortableComponent extends HTMLDivElement {
   adoptedCallback() {
     // Component moved to a new document
     console.log('Component moved to new document');
@@ -202,7 +206,8 @@
   </section>
   <section>
     <h4>Attribute Change Batching</h4>
-    <pre><code class="language-javascript">class BatchedComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class BatchedComponent extends HTMLDivElement {
   constructor() {
     super();
     this._pendingUpdates = new Set();

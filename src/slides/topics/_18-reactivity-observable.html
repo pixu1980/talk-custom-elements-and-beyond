@@ -12,7 +12,8 @@
   </section>
   <section>
     <h4>Observable Pattern (EventTarget based)</h4>
-    <pre><code class="language-javascript">function observable(initial) {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">function observable(initial) {
   let value = initial;
   const et = new EventTarget();
   
@@ -36,7 +37,8 @@
   </section>
   <section>
     <h4>Using Observable in customElements</h4>
-    <pre><code class="language-javascript">// Create observable state
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Create observable state
 const counter = observable(0);
 
 class CounterDisplay extends HTMLDivElement {
@@ -64,7 +66,8 @@ customElements.define('increment-button', IncrementButton, { extends: 'button' }
   </section>
   <section>
     <h4>Observable Pattern in Action</h4>
-    <pre><code class="language-html">&lt;div is="counter-display"&gt;&lt;/div&gt;
+    <pre>
+        <code data-trim data-line-numbers class="hljs html">&lt;div is="counter-display"&gt;&lt;/div&gt;
 &lt;button is="increment-button"&gt;+1&lt;/button&gt;</code></pre>
     <div class="fragment">
       <p><strong>Benefits:</strong></p>

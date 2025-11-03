@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Basic Usage in React</h4>
-    <pre><code class="language-jsx">// App.jsx
+    <pre>
+        <code data-trim data-line-numbers class="hljs jsx">// App.jsx
 import { useEffect, useRef } from 'react';
 import './components/counter-button.js';
 
@@ -43,7 +44,8 @@ function App() {
   </section>
   <section>
     <h4>React Wrapper Component</h4>
-    <pre><code class="language-jsx">// CounterButton.jsx
+    <pre>
+        <code data-trim data-line-numbers class="hljs jsx">// CounterButton.jsx
 import { useEffect, useRef, forwardRef } from 'react';
 import './counter-button.js';
 
@@ -93,7 +95,8 @@ export default CounterButton;</code></pre>
   </section>
   <section>
     <h4>Using the Wrapper</h4>
-    <pre><code class="language-jsx">// App.jsx
+    <pre>
+        <code data-trim data-line-numbers class="hljs jsx">// App.jsx
 import { useState } from 'react';
 import CounterButton from './CounterButton';
 
@@ -127,7 +130,8 @@ export default App;</code></pre>
   </section>
   <section>
     <h4>Custom Hook for Elements</h4>
-    <pre><code class="language-javascript">// useCustomElement.js
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// useCustomElement.js
 import { useEffect, useRef, useCallback } from 'react';
 
 export function useCustomElement(elementName) {
@@ -173,7 +177,8 @@ export function useCustomElement(elementName) {
   </section>
   <section>
     <h4>Using the Hook</h4>
-    <pre><code class="language-jsx">// DataList.jsx
+    <pre>
+        <code data-trim data-line-numbers class="hljs jsx">// DataList.jsx
 import { useEffect, useState } from 'react';
 import { useCustomElement } from './useCustomElement';
 import './data-list.js';
@@ -207,7 +212,8 @@ export default DataList;</code></pre>
   </section>
   <section>
     <h4>React 19+ with customElements</h4>
-    <pre><code class="language-jsx">// React 19 has better customElements support
+    <pre>
+        <code data-trim data-line-numbers class="hljs jsx">// React 19 has better customElements support
 import './counter-button.js';
 
 function App() {

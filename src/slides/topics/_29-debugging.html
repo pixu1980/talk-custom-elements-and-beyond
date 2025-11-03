@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Browser DevTools</h4>
-    <pre><code class="language-javascript">class DebuggableComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class DebuggableComponent extends HTMLDivElement {
   constructor() {
     super();
     
@@ -58,7 +59,8 @@ window.debugComponent = (selector) => {
   </section>
   <section>
     <h4>Custom DevTools Panel</h4>
-    <pre><code class="language-javascript">// Create debug panel for component
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Create debug panel for component
 class ComponentDebugPanel {
   constructor(component) {
     this.component = component;
@@ -116,7 +118,8 @@ panel.show();</code></pre>
   </section>
   <section>
     <h4>Performance Profiling</h4>
-    <pre><code class="language-javascript">class ProfiledComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class ProfiledComponent extends HTMLDivElement {
   constructor() {
     super();
     this.metrics = {
@@ -167,7 +170,8 @@ console.table(component.getMetrics());</code></pre>
   </section>
   <section>
     <h4>Error Tracking</h4>
-    <pre><code class="language-javascript">class ErrorTrackingComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class ErrorTrackingComponent extends HTMLDivElement {
   constructor() {
     super();
     this.errors = [];
@@ -223,7 +227,8 @@ window.addEventListener('component-error', (event) => {
   </section>
   <section>
     <h4>Logging Utilities</h4>
-    <pre><code class="language-javascript">// Create custom logger for components
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Create custom logger for components
 class ComponentLogger {
   constructor(componentName) {
     this.name = componentName;
@@ -291,7 +296,8 @@ localStorage.setItem('debug:LoggedComponent', 'true');</code></pre>
   </section>
   <section>
     <h4>Testing in DevTools</h4>
-    <pre><code class="language-javascript">// Helper functions for testing in console
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Helper functions for testing in console
 
 // Test component by selector
 window.$test = (selector) => {

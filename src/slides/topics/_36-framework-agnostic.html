@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Universal Component Pattern</h4>
-    <pre><code class="language-javascript">// universal-button.js
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// universal-button.js
 class UniversalButton extends HTMLButtonElement {
   // Use standard web APIs only
   static get observedAttributes() {
@@ -82,7 +83,8 @@ customElements.define('universal-button', UniversalButton, {
   </section>
   <section>
     <h4>Framework Adapters</h4>
-    <pre><code class="language-javascript">// adapters/react.jsx
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// adapters/react.jsx
 import { forwardRef, useEffect, useRef } from 'react';
 
 export function createReactWrapper(elementName, events = []) {
@@ -132,7 +134,8 @@ const UniversalButton = createReactWrapper('universal-button', ['button-click'])
   </section>
   <section>
     <h4>Interoperability Best Practices</h4>
-    <pre><code class="language-javascript">// Good: Framework-agnostic data flow
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Good: Framework-agnostic data flow
 class DataComponent extends HTMLDivElement {
   // ✅ Property for complex data
   set data(value) {
@@ -175,7 +178,8 @@ class DataComponent extends HTMLDivElement {
   </section>
   <section>
     <h4>Testing Across Frameworks</h4>
-    <pre><code class="language-javascript">// test/universal.test.js
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// test/universal.test.js
 describe('Universal Component', () => {
   it('works in vanilla JavaScript', () => {
     const button = document.createElement('button', {
@@ -210,7 +214,8 @@ describe('Universal Component', () => {
   </section>
   <section>
     <h4>Progressive Enhancement</h4>
-    <pre><code class="language-html">&lt;!-- Component works without JavaScript --&gt;
+    <pre>
+        <code data-trim data-line-numbers class="hljs html">&lt;!-- Component works without JavaScript --&gt;
 &lt;button is="universal-button" disabled&gt;
   &lt;!-- Fallback content --&gt;
   Click me

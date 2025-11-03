@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Semantic Versioning</h4>
-    <pre><code class="language-javascript">// Component with version information
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Component with version information
 class VersionedButton extends HTMLButtonElement {
   static VERSION = '2.1.0';
   
@@ -48,7 +49,8 @@ if (!VersionedButton.checkCompatibility('2.0.0')) {
   </section>
   <section>
     <h4>Feature Detection</h4>
-    <pre><code class="language-javascript">class FeatureAwareComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class FeatureAwareComponent extends HTMLDivElement {
   static FEATURES = {
     // Core features
     core: true,
@@ -100,7 +102,8 @@ if (!FeatureAwareComponent.isSupported()) {
   </section>
   <section>
     <h4>Polyfill Strategy</h4>
-    <pre><code class="language-html">&lt;!-- index.html --&gt;
+    <pre>
+        <code data-trim data-line-numbers class="hljs html">&lt;!-- index.html --&gt;
 &lt;script&gt;
   // Check for customElements support
   if (!('customElements' in window)) {
@@ -121,7 +124,8 @@ if (!FeatureAwareComponent.isSupported()) {
     import('./components/index.js');
   }
 &lt;/script&gt;</code></pre>
-    <pre><code class="language-javascript">// Conditional polyfill loading
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Conditional polyfill loading
 async function ensureSupport() {
   const checks = {
     customElements: 'customElements' in window,
@@ -148,7 +152,8 @@ import('./components/index.js');</code></pre>
   </section>
   <section>
     <h4>Backward Compatibility</h4>
-    <pre><code class="language-javascript">class BackwardCompatibleComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class BackwardCompatibleComponent extends HTMLDivElement {
   constructor() {
     super();
     this.migrateOldAttributes();
@@ -206,7 +211,8 @@ import('./components/index.js');</code></pre>
   </section>
   <section>
     <h4>Migration Guide</h4>
-    <pre><code class="language-javascript">/**
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">/**
  * Migration Guide: v1.x to v2.x
  * 
  * Breaking Changes:
@@ -257,7 +263,8 @@ class MigrationHelper {
   </section>
   <section>
     <h4>Compatibility Testing</h4>
-    <pre><code class="language-javascript">// Test suite for version compatibility
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Test suite for version compatibility
 describe('Version Compatibility', () => {
   it('should maintain backward compatibility', () => {
     const component = document.createElement('div', {

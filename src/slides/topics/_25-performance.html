@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Rendering Optimization</h4>
-    <pre><code class="language-javascript">class OptimizedList extends HTMLUListElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class OptimizedList extends HTMLUListElement {
   constructor() {
     super();
     this._renderScheduled = false;
@@ -56,7 +57,8 @@
   </section>
   <section>
     <h4>Lazy Loading Content</h4>
-    <pre><code class="language-javascript">class LazyImage extends HTMLImageElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class LazyImage extends HTMLImageElement {
   connectedCallback() {
     // Don't load image immediately
     this._originalSrc = this.src;
@@ -99,7 +101,8 @@ customElements.define('lazy-image', LazyImage, { extends: 'img' });</code></pre>
   </section>
   <section>
     <h4>Memory Management</h4>
-    <pre><code class="language-javascript">class MemoryEfficientComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class MemoryEfficientComponent extends HTMLDivElement {
   constructor() {
     super();
     this._cache = new WeakMap(); // Auto garbage collected
@@ -142,7 +145,8 @@ customElements.define('lazy-image', LazyImage, { extends: 'img' });</code></pre>
   </section>
   <section>
     <h4>CSS Containment</h4>
-    <pre><code class="language-javascript">class ContainedComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class ContainedComponent extends HTMLDivElement {
   connectedCallback() {
     // Use CSS containment for better performance
     // Tells browser this element's internals don't affect outside
@@ -161,7 +165,8 @@ customElements.define('lazy-image', LazyImage, { extends: 'img' });</code></pre>
     this.render();
   }
 }</code></pre>
-    <pre><code class="language-css">/* CSS containment for better rendering performance */
+    <pre>
+        <code data-trim data-line-numbers class="hljs css">/* CSS containment for better rendering performance */
 .component {
   /* Layout: Internal layout doesn't affect external elements */
   contain: layout;
@@ -181,7 +186,8 @@ customElements.define('lazy-image', LazyImage, { extends: 'img' });</code></pre>
   </section>
   <section>
     <h4>will-change Property</h4>
-    <pre><code class="language-javascript">class AnimatedComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class AnimatedComponent extends HTMLDivElement {
   connectedCallback() {
     this.setupAnimation();
   }
@@ -216,7 +222,8 @@ customElements.define('lazy-image', LazyImage, { extends: 'img' });</code></pre>
   </section>
   <section>
     <h4>Performance Measurement</h4>
-    <pre><code class="language-javascript">class MeasuredComponent extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class MeasuredComponent extends HTMLDivElement {
   connectedCallback() {
     performance.mark('component-connect-start');
     

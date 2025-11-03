@@ -15,7 +15,8 @@
   </section>
   <section>
     <h4>React Wrapper Quickstart</h4>
-    <pre><code class="language-javascript">export function wrapReact(tagName, events = []){
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">export function wrapReact(tagName, events = []){
   return forwardRef(({ children, ...props }, ref) => {
     const elRef = ref || useRef(null);
 
@@ -40,7 +41,8 @@
   </section>
   <section>
     <h4>Vue Adapter Quickstart</h4>
-    <pre><code class="language-javascript">export function wrapVue(name){
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">export function wrapVue(name){
   return {
     name,
     props: ['modelValue', 'items', 'variant'],

@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Design System Structure</h4>
-    <pre><code class="language-plaintext">design-system/
+    <pre>
+        <code data-trim data-line-numbers class="hljs plaintext">design-system/
 ├── tokens/
 │   ├── colors.css
 │   ├── typography.css
@@ -26,7 +27,8 @@
   </section>
   <section>
     <h4>Design Tokens</h4>
-    <pre><code class="language-css">/* tokens/colors.css */
+    <pre>
+        <code data-trim data-line-numbers class="hljs css">/* tokens/colors.css */
 :root {
   /* Primary colors */
   --color-primary-50: #e3f2fd;
@@ -45,7 +47,8 @@
   --button-text: white;
   --button-hover: var(--color-primary-900);
 }</code></pre>
-    <pre><code class="language-javascript">// tokens/tokens.js
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// tokens/tokens.js
 export const tokens = {
   colors: {
     primary: {
@@ -78,7 +81,8 @@ export const tokens = {
   </section>
   <section>
     <h4>Base Element Class</h4>
-    <pre><code class="language-javascript">// utils/base-element.js
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// utils/base-element.js
 export class BaseElement extends HTMLElement {
   constructor(baseElement = HTMLElement) {
     super();
@@ -119,7 +123,8 @@ export class BaseElement extends HTMLElement {
   </section>
   <section>
     <h4>Design System Button</h4>
-    <pre><code class="language-javascript">// components/button/button.js
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// components/button/button.js
 import { BaseElement } from '../../utils/base-element.js';
 import styles from './button.css' assert { type: 'css' };
 
@@ -209,7 +214,8 @@ customElements.define('ds-button', DSButton, { extends: 'button' });</code></pre
   </section>
   <section>
     <h4>Button Styles</h4>
-    <pre><code class="language-css">/* components/button/button.css */
+    <pre>
+        <code data-trim data-line-numbers class="hljs css">/* components/button/button.css */
 .ds-button {
   /* Base styles */
   display: inline-flex;
@@ -273,7 +279,8 @@ customElements.define('ds-button', DSButton, { extends: 'button' });</code></pre
   </section>
   <section>
     <h4>Component Documentation</h4>
-    <pre><code class="language-markdown"># Button Component
+    <pre>
+        <code data-trim data-line-numbers class="hljs markdown"># Button Component
 
 ## Usage
 
@@ -312,7 +319,8 @@ customElements.define('ds-button', DSButton, { extends: 'button' });</code></pre
   </section>
   <section>
     <h4>Publishing the Design System</h4>
-    <pre><code class="language-json">// package.json
+    <pre>
+        <code data-trim data-line-numbers class="hljs json">// package.json
 {
   "name": "@company/design-system",
   "version": "1.0.0",

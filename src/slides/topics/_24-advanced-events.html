@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Event Delegation with Data Attributes</h4>
-    <pre><code class="language-javascript">class ActionableList extends HTMLUListElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class ActionableList extends HTMLUListElement {
   connectedCallback() {
     // Single event listener for all actions
     this.addEventListener('click', this.handleAction);
@@ -41,7 +42,8 @@
     this.removeEventListener('click', this.handleAction);
   }
 }</code></pre>
-    <pre><code class="language-html">&lt;ul is="actionable-list"&gt;
+    <pre>
+        <code data-trim data-line-numbers class="hljs html">&lt;ul is="actionable-list"&gt;
   &lt;li data-id="1"&gt;
     Item 1
     &lt;button data-action="edit"&gt;Edit&lt;/button&gt;
@@ -52,7 +54,8 @@
   </section>
   <section>
     <h4>Event Bus Pattern</h4>
-    <pre><code class="language-javascript">// Global event bus
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Global event bus
 class EventBus extends EventTarget {
   static instance = new EventBus();
   
@@ -103,7 +106,8 @@ class PublisherComponent extends HTMLButtonElement {
   </section>
   <section>
     <h4>Event Throttling and Debouncing</h4>
-    <pre><code class="language-javascript">class SearchInput extends HTMLInputElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class SearchInput extends HTMLInputElement {
   constructor() {
     super();
     this._searchTimeout = null;
@@ -148,7 +152,8 @@ class PublisherComponent extends HTMLButtonElement {
   </section>
   <section>
     <h4>Event Composition</h4>
-    <pre><code class="language-javascript">class GestureButton extends HTMLButtonElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class GestureButton extends HTMLButtonElement {
   constructor() {
     super();
     this._pressStart = 0;
@@ -193,7 +198,8 @@ class PublisherComponent extends HTMLButtonElement {
   </section>
   <section>
     <h4>Promise-Based Events</h4>
-    <pre><code class="language-javascript">class AsyncDialog extends HTMLDialogElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class AsyncDialog extends HTMLDialogElement {
   // Return promise that resolves with user's choice
   async ask(question) {
     return new Promise((resolve) => {
@@ -229,7 +235,8 @@ if (answer === 'yes') {
   </section>
   <section>
     <h4>Event Replay Pattern</h4>
-    <pre><code class="language-javascript">class EventRecorder extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class EventRecorder extends HTMLDivElement {
   constructor() {
     super();
     this._eventLog = [];

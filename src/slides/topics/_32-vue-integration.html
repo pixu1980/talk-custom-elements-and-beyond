@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Vue Configuration</h4>
-    <pre><code class="language-javascript">// vite.config.js (Vue 3 + Vite)
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// vite.config.js (Vue 3 + Vite)
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
@@ -21,7 +22,8 @@ export default defineConfig({
     }),
   ],
 });</code></pre>
-    <pre><code class="language-javascript">// main.js (Vue 3)
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// main.js (Vue 3)
 import { createApp } from 'vue';
 import App from './App.vue';
 
@@ -40,7 +42,8 @@ app.mount('#app');</code></pre>
   </section>
   <section>
     <h4>Using in Vue Templates</h4>
-    <pre><code class="language-vue">&lt;template&gt;
+    <pre>
+        <code data-trim data-line-numbers class="hljs vue">&lt;template&gt;
   &lt;div class="app"&gt;
     &lt;!-- Custom element as standard HTML --&gt;
     &lt;button 
@@ -82,7 +85,8 @@ onMounted(() => {
   </section>
   <section>
     <h4>Two-Way Binding with v-model</h4>
-    <pre><code class="language-vue">&lt;template&gt;
+    <pre>
+        <code data-trim data-line-numbers class="hljs vue">&lt;template&gt;
   &lt;!-- Custom v-model support --&gt;
   &lt;input 
     is="custom-input"
@@ -98,7 +102,8 @@ import { ref } from 'vue';
 
 const inputValue = ref('');
 &lt;/script&gt;</code></pre>
-    <pre><code class="language-javascript">// custom-input.js - Vue-compatible custom element
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// custom-input.js - Vue-compatible custom element
 class CustomInput extends HTMLInputElement {
   connectedCallback() {
     // Emit 'input' event for v-model
@@ -112,7 +117,8 @@ customElements.define('custom-input', CustomInput, { extends: 'input' });</code>
   </section>
   <section>
     <h4>Wrapper Component Pattern</h4>
-    <pre><code class="language-vue">&lt;!-- CustomButton.vue --&gt;
+    <pre>
+        <code data-trim data-line-numbers class="hljs vue">&lt;!-- CustomButton.vue --&gt;
 &lt;template&gt;
   &lt;button 
     is="fancy-button"
@@ -160,7 +166,8 @@ onMounted(() => {
   </section>
   <section>
     <h4>Composables with customElements</h4>
-    <pre><code class="language-javascript">// useCustomElement.js
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// useCustomElement.js
 import { ref, onMounted, onUnmounted } from 'vue';
 
 export function useCustomElement(elementRef, elementType) {
@@ -197,7 +204,8 @@ export function useCustomElement(elementRef, elementType) {
     callMethod,
   };
 }</code></pre>
-    <pre><code class="language-vue">&lt;script setup&gt;
+    <pre>
+        <code data-trim data-line-numbers class="hljs vue">&lt;script setup&gt;
 import { ref } from 'vue';
 import { useCustomElement } from './useCustomElement';
 

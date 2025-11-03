@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Example 1: Notification Toast</h4>
-    <pre><code class="language-javascript">class ToastNotification extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class ToastNotification extends HTMLDivElement {
   static get observedAttributes() {
     return ['type', 'duration', 'dismissible'];
   }
@@ -53,7 +54,8 @@ customElements.define('toast-notification', ToastNotification, {
   </section>
   <section>
     <h4>Usage: Toast</h4>
-    <pre><code class="language-html">&lt;div is="toast-notification" 
+    <pre>
+        <code data-trim data-line-numbers class="hljs html">&lt;div is="toast-notification" 
      type="success" 
      duration="3000" 
      dismissible&gt;
@@ -78,7 +80,8 @@ showToast('Hello World!', 'success');</code></pre>
   </section>
   <section>
     <h4>Example 2: Accordion Panel</h4>
-    <pre><code class="language-javascript">class AccordionPanel extends HTMLDetailsElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class AccordionPanel extends HTMLDetailsElement {
   connectedCallback() {
     this.setupAccessibility();
     this.setupAnimation();
@@ -139,7 +142,8 @@ customElements.define('accordion-panel', AccordionPanel, {
   </section>
   <section>
     <h4>Example 3: Copy Button</h4>
-    <pre><code class="language-javascript">class CopyButton extends HTMLButtonElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class CopyButton extends HTMLButtonElement {
   connectedCallback() {
     this.textContent = this.getAttribute('label') || 'Copy';
     this.addEventListener('click', this.copyToClipboard);

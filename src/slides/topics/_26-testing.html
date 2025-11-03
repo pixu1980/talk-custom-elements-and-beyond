@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Unit Testing Setup</h4>
-    <pre><code class="language-javascript">// counter-button.test.js
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// counter-button.test.js
 import { expect } from '@esm-bundle/chai';
 import './counter-button.js';
 
@@ -44,7 +45,8 @@ describe('CounterButton', () => {
   </section>
   <section>
     <h4>Testing Lifecycle</h4>
-    <pre><code class="language-javascript">describe('Component Lifecycle', () => {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">describe('Component Lifecycle', () => {
   it('should call connectedCallback when added to DOM', () => {
     const element = document.createElement('div', { is: 'my-component' });
     const spy = sinon.spy(element, 'connectedCallback');
@@ -79,7 +81,8 @@ describe('CounterButton', () => {
   </section>
   <section>
     <h4>Testing User Interactions</h4>
-    <pre><code class="language-javascript">describe('User Interactions', () => {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">describe('User Interactions', () => {
   it('should handle keyboard navigation', () => {
     const list = document.createElement('ul', { is: 'keyboard-list' });
     list.innerHTML = `
@@ -117,7 +120,8 @@ describe('CounterButton', () => {
   </section>
   <section>
     <h4>Testing Async Operations</h4>
-    <pre><code class="language-javascript">describe('Async Operations', () => {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">describe('Async Operations', () => {
   it('should fetch and render data', async () => {
     // Mock fetch
     global.fetch = sinon.stub().resolves({
@@ -160,7 +164,8 @@ describe('CounterButton', () => {
   </section>
   <section>
     <h4>Integration Testing</h4>
-    <pre><code class="language-javascript">describe('Component Integration', () => {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">describe('Component Integration', () => {
   it('should communicate between components', async () => {
     // Create parent and child
     const parent = document.createElement('div', { is: 'parent-component' });
@@ -202,7 +207,8 @@ describe('CounterButton', () => {
   </section>
   <section>
     <h4>Visual Regression Testing</h4>
-    <pre><code class="language-javascript">// Using Playwright or Puppeteer
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Using Playwright or Puppeteer
 describe('Visual Tests', () => {
   it('should match screenshot', async () => {
     await page.goto('http://localhost:8000/test.html');

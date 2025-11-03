@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Angular Configuration</h4>
-    <pre><code class="language-typescript">// app.module.ts (Angular with NgModule)
+    <pre>
+        <code data-trim data-line-numbers class="hljs typescript">// app.module.ts (Angular with NgModule)
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
@@ -22,7 +23,8 @@ import './components/data-list.js';
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // ⭐ Enable customElements
 })
 export class AppModule {}</code></pre>
-    <pre><code class="language-typescript">// app.config.ts (Angular standalone)
+    <pre>
+        <code data-trim data-line-numbers class="hljs typescript">// app.config.ts (Angular standalone)
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
@@ -35,7 +37,8 @@ export const appConfig: ApplicationConfig = {
   </section>
   <section>
     <h4>Using in Templates</h4>
-    <pre><code class="language-typescript">// app.component.ts
+    <pre>
+        <code data-trim data-line-numbers class="hljs typescript">// app.component.ts
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
 @Component({
@@ -83,7 +86,8 @@ export class AppComponent implements AfterViewInit {
   </section>
   <section>
     <h4>Property Binding</h4>
-    <pre><code class="language-typescript">// data-list.component.ts
+    <pre>
+        <code data-trim data-line-numbers class="hljs typescript">// data-list.component.ts
 import { Component, ViewChild, ElementRef, Input, OnChanges } from '@angular/core';
 
 interface DataItem {
@@ -112,7 +116,8 @@ export class DataListComponent implements OnChanges {
   </section>
   <section>
     <h4>Directive Wrapper</h4>
-    <pre><code class="language-typescript">// counter-button.directive.ts
+    <pre>
+        <code data-trim data-line-numbers class="hljs typescript">// counter-button.directive.ts
 import { 
   Directive, 
   ElementRef, 
@@ -163,7 +168,8 @@ export class CounterButtonDirective implements OnInit, OnDestroy {
   </section>
   <section>
     <h4>Using the Directive</h4>
-    <pre><code class="language-typescript">// app.component.ts
+    <pre>
+        <code data-trim data-line-numbers class="hljs typescript">// app.component.ts
 import { Component } from '@angular/core';
 import { CounterButtonDirective } from './counter-button.directive';
 
@@ -188,7 +194,8 @@ export class AppComponent {
   </section>
   <section>
     <h4>Service for customElements</h4>
-    <pre><code class="language-typescript">// custom-elements.service.ts
+    <pre>
+        <code data-trim data-line-numbers class="hljs typescript">// custom-elements.service.ts
 import { Injectable } from '@angular/core';
 import { Observable, fromEvent } from 'rxjs';
 

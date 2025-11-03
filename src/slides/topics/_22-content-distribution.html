@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Named Regions Pattern</h4>
-    <pre><code class="language-javascript">class CardLayout extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class CardLayout extends HTMLDivElement {
   connectedCallback() {
     this.distributeContent();
   }
@@ -43,7 +44,8 @@
     this.replaceChildren(wrapper);
   }
 }</code></pre>
-    <pre><code class="language-html">&lt;div is="card-layout"&gt;
+    <pre>
+        <code data-trim data-line-numbers class="hljs html">&lt;div is="card-layout"&gt;
   &lt;h2 slot="header"&gt;Card Title&lt;/h2&gt;
   &lt;p slot="body"&gt;Card content goes here&lt;/p&gt;
   &lt;button slot="footer"&gt;Action&lt;/button&gt;
@@ -51,7 +53,8 @@
   </section>
   <section>
     <h4>Content Projection with Classes</h4>
-    <pre><code class="language-javascript">class TabContainer extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class TabContainer extends HTMLDivElement {
   connectedCallback() {
     this.setupTabs();
   }
@@ -96,7 +99,8 @@
   </section>
   <section>
     <h4>Dynamic Content Wrapping</h4>
-    <pre><code class="language-javascript">class GridLayout extends HTMLDivElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class GridLayout extends HTMLDivElement {
   connectedCallback() {
     this.wrapChildren();
     this.observeChanges();
@@ -142,7 +146,8 @@
   </section>
   <section>
     <h4>Content Filtering</h4>
-    <pre><code class="language-javascript">class FilterableList extends HTMLUListElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class FilterableList extends HTMLUListElement {
   constructor() {
     super();
     this._originalChildren = [];
@@ -188,7 +193,8 @@
   </section>
   <section>
     <h4>Template Cloning</h4>
-    <pre><code class="language-javascript">class RepeatList extends HTMLUListElement {
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">class RepeatList extends HTMLUListElement {
   set items(items) {
     // Get template from within component
     const template = this.querySelector('template');
@@ -223,7 +229,8 @@
     });
   }
 }</code></pre>
-    <pre><code class="language-html">&lt;ul is="repeat-list"&gt;
+    <pre>
+        <code data-trim data-line-numbers class="hljs html">&lt;ul is="repeat-list"&gt;
   &lt;template&gt;
     &lt;li&gt;
       &lt;strong data-bind="name"&gt;&lt;/strong&gt;

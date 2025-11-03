@@ -17,7 +17,8 @@
   </section>
   <section>
     <h4>Standard Communication Patterns</h4>
-    <pre><code class="language-javascript">// Parent-Child Communication
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Parent-Child Communication
 class ParentComponent extends HTMLDivElement {
   connectedCallback() {
     // Listen to child events
@@ -69,7 +70,8 @@ class SiblingB extends HTMLDivElement {
   </section>
   <section>
     <h4>Form Participation</h4>
-    <pre><code class="language-javascript">// Standard form integration
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Standard form integration
 class CustomInput extends HTMLInputElement {
   constructor() {
     super();
@@ -119,7 +121,8 @@ customElements.define('custom-input', CustomInput, { extends: 'input' });</code>
   </section>
   <section>
     <h4>CSS Custom Properties Bridge</h4>
-    <pre><code class="language-css">/* Design tokens that work everywhere */
+    <pre>
+        <code data-trim data-line-numbers class="hljs css">/* Design tokens that work everywhere */
 :root {
   /* Namespace your tokens */
   --ds-color-primary: #2196f3;
@@ -150,7 +153,8 @@ button[is="ds-button"] {
   </section>
   <section>
     <h4>Accessibility Standards</h4>
-    <pre><code class="language-javascript">// Accessible by default
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Accessible by default
 class AccessibleButton extends HTMLButtonElement {
   connectedCallback() {
     // Inherit native button accessibility
@@ -184,7 +188,8 @@ class AccessibleButton extends HTMLButtonElement {
   </section>
   <section>
     <h4>Module System Compatibility</h4>
-    <pre><code class="language-javascript">// ESM (Modern)
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// ESM (Modern)
 export class MyComponent extends HTMLDivElement {
   // ...
 }
@@ -199,7 +204,8 @@ const { MyComponent } = await import('./my-component.js');
 
 // Script tag
 &lt;script type="module" src="./my-component.js"&gt;&lt;/script&gt;</code></pre>
-    <pre><code class="language-javascript">// UMD for legacy support
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// UMD for legacy support
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define([], factory); // AMD

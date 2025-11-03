@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Basic TypeScript Definition</h4>
-    <pre><code class="language-typescript">// counter-button.ts
+    <pre>
+        <code data-trim data-line-numbers class="hljs typescript">// counter-button.ts
 interface CounterButtonElement extends HTMLButtonElement {
   count: number;
   increment(): void;
@@ -50,7 +51,8 @@ customElements.define('counter-button', CounterButton, { extends: 'button' });</
   </section>
   <section>
     <h4>Type-Safe Attributes</h4>
-    <pre><code class="language-typescript">type ThemeValue = 'light' | 'dark' | 'auto';
+    <pre>
+        <code data-trim data-line-numbers class="hljs typescript">type ThemeValue = 'light' | 'dark' | 'auto';
 type SizeValue = 'small' | 'medium' | 'large';
 
 interface ThemedButtonAttributes {
@@ -110,7 +112,8 @@ customElements.define('themed-button', ThemedButton, { extends: 'button' });</co
   </section>
   <section>
     <h4>Event Type Definitions</h4>
-    <pre><code class="language-typescript">// Define custom event types
+    <pre>
+        <code data-trim data-line-numbers class="hljs typescript">// Define custom event types
 interface CountChangedEvent extends CustomEvent {
   detail: {
     oldValue: number;
@@ -164,7 +167,8 @@ button.addEventListener('count-changed', (event) => {
   </section>
   <section>
     <h4>Generic Components</h4>
-    <pre><code class="language-typescript">// Generic data list component
+    <pre>
+        <code data-trim data-line-numbers class="hljs typescript">// Generic data list component
 interface DataItem {
   id: string | number;
   [key: string]: unknown;
@@ -232,7 +236,8 @@ const user = userList.findById(1); // Type: User | undefined</code></pre>
   </section>
   <section>
     <h4>Decorators (Experimental)</h4>
-    <pre><code class="language-typescript">// Using decorators for cleaner syntax
+    <pre>
+        <code data-trim data-line-numbers class="hljs typescript">// Using decorators for cleaner syntax
 function customElement(tagName: string, options?: ElementDefinitionOptions) {
   return function (target: CustomElementConstructor) {
     customElements.define(tagName, target, options);
@@ -287,7 +292,8 @@ class FancyButton extends HTMLButtonElement {
   </section>
   <section>
     <h4>Type Declaration Files</h4>
-    <pre><code class="language-typescript">// counter-button.d.ts
+    <pre>
+        <code data-trim data-line-numbers class="hljs typescript">// counter-button.d.ts
 declare global {
   interface HTMLElementTagNameMap {
     'counter-button': CounterButtonElement;

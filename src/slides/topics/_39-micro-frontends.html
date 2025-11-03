@@ -15,7 +15,8 @@
   </section>
   <section>
     <h4>Shell + Remote Composition</h4>
-    <pre><code class="language-html">&lt;!-- Shell owns layout and navigation --&gt;
+    <pre>
+        <code data-trim data-line-numbers class="hljs html">&lt;!-- Shell owns layout and navigation --&gt;
 &lt;header&gt;My App&lt;/header&gt;
 &lt;main&gt;
   &lt;section&gt;
@@ -27,7 +28,8 @@
     &lt;table is="orders-table" data-endpoint="/api/orders"&gt;&lt;/table&gt;
   &lt;/section&gt;
 &lt;/main&gt;</code></pre>
-    <pre><code class="language-javascript">// Shell dynamically loads MFEs
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Shell dynamically loads MFEs
 async function loadRemote(name, url){
   if (!customElements.get(name)) {
     await import(url);
@@ -41,7 +43,8 @@ await Promise.all([
   </section>
   <section>
     <h4>Contracts: Props and Events</h4>
-    <pre><code class="language-javascript">// cart-widget.js
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// cart-widget.js
 class CartWidget extends HTMLDivElement {
   static get observedAttributes(){ return ['data-endpoint']; }
 

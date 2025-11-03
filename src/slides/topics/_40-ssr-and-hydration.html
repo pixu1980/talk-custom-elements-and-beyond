@@ -5,7 +5,8 @@
   </section>
   <section>
     <h4>Server Renders HTML</h4>
-    <pre><code class="language-html">&lt;!-- Server output (no JS required to read) --&gt;
+    <pre>
+        <code data-trim data-line-numbers class="hljs html">&lt;!-- Server output (no JS required to read) --&gt;
 &lt;article&gt;
   &lt;h2&gt;Latest News&lt;/h2&gt;
   &lt;ul&gt;
@@ -16,7 +17,8 @@
   </section>
   <section>
     <h4>Enhance when defined</h4>
-    <pre><code class="language-javascript">// Enhance progressively
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Enhance progressively
 class NewsList extends HTMLUListElement {
   connectedCallback(){
     this.classList.add('enhanced');
@@ -33,14 +35,16 @@ customElements.whenDefined('news-list').then(() => {
   </section>
   <section>
     <h4>Islands Architecture</h4>
-    <pre><code class="language-html">&lt;!-- Static page with interactive islands --&gt;
+    <pre>
+        <code data-trim data-line-numbers class="hljs html">&lt;!-- Static page with interactive islands --&gt;
 &lt;main&gt;
   &lt;article&gt;...static content...&lt;/article&gt;
   &lt;aside&gt;
     &lt;button is="counter-button"&gt;Count: 0&lt;/button&gt;
   &lt;/aside&gt;
 &lt;/main&gt;</code></pre>
-    <pre><code class="language-javascript">// Load only the island script
+    <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Load only the island script
 import('/components/counter-button.js');</code></pre>
   </section>
   <section>

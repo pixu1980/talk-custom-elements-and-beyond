@@ -174,7 +174,7 @@ src/
 ### Code Examples Template
 
 ````html
-<section class="slide" data-markdown>
+<section data-markdown>
   <textarea data-template>
     ## API/Topic Name
 
