@@ -65,7 +65,7 @@ button[is="themed-button"] {
   <section>
     <h4>Design tokens and component contract</h4>
     <pre>
-      <code class="hljs css" data-trim data-line-numbers>
+      <code class="hljs css" data-trim data-line-numbers="|1-7|9-23">
 :root {
   --color-primary: #007bff;
   --space-sm: 0.5rem;
@@ -77,9 +77,16 @@ button[is="themed-button"] {
 button[is="themed-button"] {
   background: var(--button-bg, var(--color-primary));
   color: var(--button-color, white);
-  padding: var(--button-padding, var(--space-sm) var(--space-md));
-  border-radius: var(--button-radius, var(--radius-sm));
-  font-size: var(--button-font-size, var(--font-size-base));
+  padding: var(--button-padding, 
+    var(--space-sm) var(--space-md)
+  );
+  
+  border-radius:
+    var(--button-radius, var(--radius-sm));
+  
+  font-size:
+    var(--button-font-size, var(--font-size-base));
+  
   filter: var(--button-filter, none);
 }
       </code>
@@ -89,21 +96,19 @@ button[is="themed-button"] {
   <section>
     <h4>Organize with @layer</h4>
     <pre>
-      <code class="hljs css" data-trim data-line-numbers>
+      <code class="hljs css" data-trim data-line-numbers="|3-6|8-13|15-20|22-25|1">
 @layer reset, base, components, utilities, themes;
 
-/* reset/base */
+/* reset */
 @layer reset {
   *,*::before,*::after { box-sizing: border-box; }
 }
 
-@layer base {
-  :root { --space-sm: 0.5rem; --space-md: 1rem; }
-}
-
 /* components */
 @layer components {
-  button[is="themed-button"] { padding: var(--space-sm) var(--space-md); }
+  button[is="themed-button"] {
+    padding: var(--space-sm) var(--space-md);
+  }
 }
 
 /* themes come last to win over components */
@@ -111,6 +116,11 @@ button[is="themed-button"] {
   :root[data-theme="dark"] {
     --button-bg: #1a1a1a; --button-color: #ffffff;
   }
+}
+
+/* base */
+@layer base {
+  :root { --space-sm: 0.5rem; --space-md: 1rem; }
 }
       </code>
     </pre>
@@ -150,7 +160,7 @@ button[is="themed-button"] {
   <section>
     <h4>State driven styling</h4>
     <pre>
-      <code class="hljs css" data-trim data-line-numbers>
+      <code class="hljs css" data-trim data-line-numbers="|1-9|11-18">
 /* data-* states */
 button[is="toggle-button"][data-state="active"] {
   background: var(--active-bg);

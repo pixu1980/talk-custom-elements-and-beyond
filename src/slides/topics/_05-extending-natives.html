@@ -18,9 +18,14 @@ class IconButton extends HTMLButtonElement {
   }
 }
 
-customElements.define('icon-button', IconButton, { extends: 'button' });
+customElements.define('icon-button', IconButton, {
+  extends: 'button'
+});
       </code>
     </pre>
+  </section>
+  <section>
+    <h4>Extending <mark>Buttons</mark></h4>
     <pre>
       <code class="hljs html" data-trim data-line-numbers>
 &lt;button is="icon-button" icon="🚀"&gt;Launch&lt;/button&gt;
@@ -60,7 +65,7 @@ customElements.define('icon-button', IconButton, { extends: 'button' });
   <section>
     <h4>Extending <mark>Inputs</mark></h4>
     <pre>
-      <code class="hljs javascript" data-trim data-line-numbers>
+      <code class="hljs javascript" data-trim data-line-numbers="|1-10|12-14|16-22|24-28">
 class DateInput extends HTMLInputElement {
   connectedCallback() {
     this.type = 'date';
@@ -76,16 +81,26 @@ customElements.define('date-input', DateInput, {
   extends: 'input'
 });
 
-const input = document.querySelector('input[is="date-input"]');
-const output = document.querySelector('output#date-demo-out');
+const input = document.querySelector(
+  'input[is="date-input"]'
+);
+
+const output = document.querySelector(
+  'output#date-demo-out'
+);
 
 input.addEventListener('change', () => {
-  output.textContent = input.value ? `Selected: ${input.value}` : '';
+  output.textContent = input.value 
+  ? `Selected: ${input.value}`
+  : '';
 });
 
       </code>
     </pre>
-    <div class="demo-input fragment">
+  </section>
+  <section>
+    <h4>Extending <mark>Inputs</mark></h4>
+    <div class="demo-input">
       <style>
         .demo-input {
           display: flex;
@@ -138,6 +153,9 @@ customElements.define('collapsible-panel', CollapsiblePanel, {
 });
       </code>
     </pre>
+  </section>
+  <section>
+    <h4>Extending Semantic <mark>Elements</mark></h4>
     <div class="demo-details" style="margin-top: 0.75rem">
       <style>
         .demo-details {
@@ -177,35 +195,47 @@ customElements.define('collapsible-panel', CollapsiblePanel, {
   <section>
     <h4>Extending <mark>Links</mark></h4>
     <pre>
-      <code class="hljs javascript" data-trim data-line-numbers>
+      <code class="hljs javascript" data-trim data-line-numbers="|3-10|12-17|21-23">
 class SafeLink extends HTMLAnchorElement {
   connectedCallback() {
     if (this.target === '_blank') {
-      const rel = new Set((this.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+      const rel = new Set((this.getAttribute('rel') || '')
+        .split(/\s+/).filter(Boolean));
+        
       rel.add('noopener');
       rel.add('noreferrer');
       this.setAttribute('rel', Array.from(rel).join(' '));
     }
+    
     const confirmMsg = this.getAttribute('data-confirm');
-    if (confirmMsg) {
+    
+    (confirmMsg) &&
       this.addEventListener('click', (e) => {
-        if (!confirm(confirmMsg)) e.preventDefault();
+        (!confirm(confirmMsg)) && e.preventDefault();
       });
-    }
   }
 }
 
-customElements.define('safe-link', SafeLink, { extends: 'a' });
+customElements.define('safe-link', SafeLink, { 
+  extends: 'a'
+});
       </code>
     </pre>
+  </section>
+  <section>
+    <h4>Extending <mark>Links</mark></h4>
     <pre>
       <code class="hljs html" data-trim data-line-numbers>
-&lt;a is="safe-link" href="https://example.com" target="_blank" data-confirm="Open external site?"&gt;External link&lt;/a&gt;
+&lt;a is="safe-link" href="https://example.com"
+  target="_blank"
+  data-confirm="Open external site?"&gt;
+  External link
+&lt;/a&gt;
       </code>
     </pre>
-    <div class="demo">
+    <small class="demo">
       <a is="safe-link" href="https://example.com" target="_blank" data-confirm="Open external site?">External link</a>
-    </div>
+    </small>
     <!-- Definition is loaded globally from src/scripts/components/safe-link.js -->
   </section>
 
@@ -238,7 +268,7 @@ customElements.define('safe-link', SafeLink, { extends: 'a' });
       </tr>
     </table>
     <small balance class="fragment" style="margin-top: 1em">
-      💡 <strong>Pro <mark>tip</mark>:</strong> Always extend the most <mark>semantic</mark> element
+      💡 <strong>Just an <mark>advice</mark>:</strong> Always extend the most <mark>semantic</mark> element, the closest element to your <mark>use case</mark>
     </small>
   </section>
 </section>

@@ -6,9 +6,9 @@
     </h3>
   </section>
   <section>
-    <h4>Step 1: Define the class</h4>
+    <h4>Step 1: <mark>Define</mark> the class</h4>
     <pre>
-      <code class="hljs language-javascript" data-trim data-line-numbers>
+      <code class="hljs language-javascript" data-trim data-line-numbers="|2-5|7-9|11-14|16-18">
 class CounterButton extends HTMLButtonElement {
   constructor() {
     super();
@@ -32,7 +32,7 @@ class CounterButton extends HTMLButtonElement {
     </pre>
   </section>
   <section>
-    <h4>Step 2: Register the element</h4>
+    <h4>Step 2: <mark>Register</mark> the element</h4>
     <pre>
       <code class="hljs language-javascript" data-trim data-line-numbers>
 customElements.define('counter-button', CounterButton, {
@@ -42,7 +42,7 @@ customElements.define('counter-button', CounterButton, {
     </pre>
   </section>
   <section>
-    <h4>Step 3: Use in HTML</h4>
+    <h4>Step 3: <mark>Use</mark> in HTML</h4>
     <pre>
       <code class="hljs language-html" data-trim data-line-numbers>
 &lt;button is="counter-button"&gt;Click me&lt;/button&gt;

@@ -3,7 +3,7 @@
     <title>customElements &amp; beyond</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="custom-elements-and-beyond.08b2b7bd.css">
+    <link rel="stylesheet" href="talk-custom-elements-and-beyond.6cc0fd88.css">
   </head>
   <body>
     <main class="reveal">
@@ -80,15 +80,33 @@
 
 <section>
   <section>
-    <p>🚨 Bold Opinion Alert 🚨</p>
-    <h4 class="fragment">After years of "experimentation" in UI Libraries and Frameworks, <mark>APIs</mark> are <mark>becoming canonical</mark></h4>
+    <h4><mark>How</mark> I hope <mark>you feel</mark> after this talk?</h4>
   </section>
   <section>
-    <h4>
+    <figure>
+      <img src="john-mc-clane-epiphany.f49eccbe.gif" alt="John McClane having an epiphany" width="60%">
+    </figure>
+  </section>
+  <section>
+    <p>🚨 Bold Opinion Alert 🚨</p>
+    <h4 balance="" class="fragment">After years of "experimentation" in UI Libraries and Frameworks, their <mark>APIs</mark> are <mark>becoming canonical</mark></h4>
+  </section>
+  <section>
+    <figure>
+      <img src="hans-gruber.dab6fa78.gif" alt="Hans Gruber from Die Hard feeling a shiver" width="60%">
+    </figure>
+  </section>
+  <section>
+    <h4 balance="">
       The <mark>web standards</mark> are <br>
-      <mark>coming back</mark> into the field <br><br>
+      <mark>coming back</mark> into the field <br>
+      <span class="fragment">(honestly... they've <mark>always been here</mark>)</span>
     </h4>
-    <img src="yoda.3bbd05d3.gif" alt="Jedi Master Yoda saying 'You must unlearn what you have learned'">
+  </section>
+  <section>
+    <figure>
+      <img src="simon-peter-gruber.f74badd9.gif" alt="Simon Peter Gruber saying: 'Somebody had some fun here'" width="70%">
+    </figure>
   </section>
   <section>
     <h4>customElements === Web Components?</h4>
@@ -226,8 +244,8 @@ customElements.define(
     </h3>
   </section>
   <section>
-    <h4>Step 1: Define the class</h4>
-    <pre>      <code class="hljs language-javascript" data-trim="" data-line-numbers="">
+    <h4>Step 1: <mark>Define</mark> the class</h4>
+    <pre>      <code class="hljs language-javascript" data-trim="" data-line-numbers="|2-5|7-9|11-14|16-18">
 class CounterButton extends HTMLButtonElement {
   constructor() {
     super();
@@ -251,7 +269,7 @@ class CounterButton extends HTMLButtonElement {
     </pre>
   </section>
   <section>
-    <h4>Step 2: Register the element</h4>
+    <h4>Step 2: <mark>Register</mark> the element</h4>
     <pre>      <code class="hljs language-javascript" data-trim="" data-line-numbers="">
 customElements.define('counter-button', CounterButton, {
   extends: 'button'
@@ -260,7 +278,7 @@ customElements.define('counter-button', CounterButton, {
     </pre>
   </section>
   <section>
-    <h4>Step 3: Use in HTML</h4>
+    <h4>Step 3: <mark>Use</mark> in HTML</h4>
     <pre>      <code class="hljs language-html" data-trim="" data-line-numbers="">
 &lt;button is="counter-button"&gt;Click me&lt;/button&gt;
       </code>
@@ -535,9 +553,14 @@ class IconButton extends HTMLButtonElement {
   }
 }
 
-customElements.define('icon-button', IconButton, { extends: 'button' });
+customElements.define('icon-button', IconButton, {
+  extends: 'button'
+});
       </code>
     </pre>
+  </section>
+  <section>
+    <h4>Extending <mark>Buttons</mark></h4>
     <pre>      <code class="hljs html" data-trim="" data-line-numbers="">
 &lt;button is="icon-button" icon="🚀"&gt;Launch&lt;/button&gt;
 &lt;button is="icon-button" icon="✨"&gt;Shine&lt;/button&gt;
@@ -574,7 +597,7 @@ customElements.define('icon-button', IconButton, { extends: 'button' });
   </section>
   <section>
     <h4>Extending <mark>Inputs</mark></h4>
-    <pre>      <code class="hljs javascript" data-trim="" data-line-numbers="">
+    <pre>      <code class="hljs javascript" data-trim="" data-line-numbers="|1-10|12-14|16-22|24-28">
 class DateInput extends HTMLInputElement {
   connectedCallback() {
     this.type = 'date';
@@ -590,16 +613,26 @@ customElements.define('date-input', DateInput, {
   extends: 'input'
 });
 
-const input = document.querySelector('input[is="date-input"]');
-const output = document.querySelector('output#date-demo-out');
+const input = document.querySelector(
+  'input[is="date-input"]'
+);
+
+const output = document.querySelector(
+  'output#date-demo-out'
+);
 
 input.addEventListener('change', () =&gt; {
-  output.textContent = input.value ? `Selected: ${input.value}` : '';
+  output.textContent = input.value 
+  ? `Selected: ${input.value}`
+  : '';
 });
 
       </code>
     </pre>
-    <div class="demo-input fragment">
+  </section>
+  <section>
+    <h4>Extending <mark>Inputs</mark></h4>
+    <div class="demo-input">
       <style>.demo-input {
   flex-flow: column;
   place-content: center;
@@ -649,6 +682,9 @@ customElements.define('collapsible-panel', CollapsiblePanel, {
 });
       </code>
     </pre>
+  </section>
+  <section>
+    <h4>Extending Semantic <mark>Elements</mark></h4>
     <div class="demo-details" style="margin-top: .75rem">
       <style>.demo-details {
   & details {
@@ -689,34 +725,46 @@ customElements.define('collapsible-panel', CollapsiblePanel, {
   </section>
   <section>
     <h4>Extending <mark>Links</mark></h4>
-    <pre>      <code class="hljs javascript" data-trim="" data-line-numbers="">
+    <pre>      <code class="hljs javascript" data-trim="" data-line-numbers="|3-10|12-17|21-23">
 class SafeLink extends HTMLAnchorElement {
   connectedCallback() {
     if (this.target === '_blank') {
-      const rel = new Set((this.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+      const rel = new Set((this.getAttribute('rel') || '')
+        .split(/\s+/).filter(Boolean));
+        
       rel.add('noopener');
       rel.add('noreferrer');
       this.setAttribute('rel', Array.from(rel).join(' '));
     }
+    
     const confirmMsg = this.getAttribute('data-confirm');
-    if (confirmMsg) {
+    
+    (confirmMsg) &amp;&amp;
       this.addEventListener('click', (e) =&gt; {
-        if (!confirm(confirmMsg)) e.preventDefault();
+        (!confirm(confirmMsg)) &amp;&amp; e.preventDefault();
       });
-    }
   }
 }
 
-customElements.define('safe-link', SafeLink, { extends: 'a' });
+customElements.define('safe-link', SafeLink, { 
+  extends: 'a'
+});
       </code>
     </pre>
+  </section>
+  <section>
+    <h4>Extending <mark>Links</mark></h4>
     <pre>      <code class="hljs html" data-trim="" data-line-numbers="">
-&lt;a is="safe-link" href="https://example.com" target="_blank" data-confirm="Open external site?"&gt;External link&lt;/a&gt;
+&lt;a is="safe-link" href="https://example.com"
+  target="_blank"
+  data-confirm="Open external site?"&gt;
+  External link
+&lt;/a&gt;
       </code>
     </pre>
-    <div class="demo">
+    <small class="demo">
       <a is="safe-link" href="https://example.com" target="_blank" data-confirm="Open external site?">External link</a>
-    </div>
+    </small>
     <!-- Definition is loaded globally from src/scripts/components/safe-link.js -->
   </section>
 
@@ -749,7 +797,7 @@ customElements.define('safe-link', SafeLink, { extends: 'a' });
       </tr>
     </tbody></table>
     <small balance="" class="fragment" style="margin-top: 1em">
-      💡 <strong>Pro <mark>tip</mark>:</strong> Always extend the most <mark>semantic</mark> element
+      💡 <strong>Just an <mark>advice</mark>:</strong> Always extend the most <mark>semantic</mark> element, the closest element to your <mark>use case</mark>
     </small>
   </section>
 </section>
@@ -817,7 +865,7 @@ button[is="themed-button"] {
   </section>
   <section>
     <h4>Design tokens and component contract</h4>
-    <pre>      <code class="hljs css" data-trim="" data-line-numbers="">
+    <pre>      <code class="hljs css" data-trim="" data-line-numbers="|1-7|9-23">
 :root {
   --color-primary: #007bff;
   --space-sm: 0.5rem;
@@ -829,9 +877,16 @@ button[is="themed-button"] {
 button[is="themed-button"] {
   background: var(--button-bg, var(--color-primary));
   color: var(--button-color, white);
-  padding: var(--button-padding, var(--space-sm) var(--space-md));
-  border-radius: var(--button-radius, var(--radius-sm));
-  font-size: var(--button-font-size, var(--font-size-base));
+  padding: var(--button-padding, 
+    var(--space-sm) var(--space-md)
+  );
+  
+  border-radius:
+    var(--button-radius, var(--radius-sm));
+  
+  font-size:
+    var(--button-font-size, var(--font-size-base));
+  
   filter: var(--button-filter, none);
 }
       </code>
@@ -840,21 +895,19 @@ button[is="themed-button"] {
 
   <section>
     <h4>Organize with @layer</h4>
-    <pre>      <code class="hljs css" data-trim="" data-line-numbers="">
+    <pre>      <code class="hljs css" data-trim="" data-line-numbers="|3-6|8-13|15-20|22-25|1">
 @layer reset, base, components, utilities, themes;
 
-/* reset/base */
+/* reset */
 @layer reset {
   *,*::before,*::after { box-sizing: border-box; }
 }
 
-@layer base {
-  :root { --space-sm: 0.5rem; --space-md: 1rem; }
-}
-
 /* components */
 @layer components {
-  button[is="themed-button"] { padding: var(--space-sm) var(--space-md); }
+  button[is="themed-button"] {
+    padding: var(--space-sm) var(--space-md);
+  }
 }
 
 /* themes come last to win over components */
@@ -862,6 +915,11 @@ button[is="themed-button"] {
   :root[data-theme="dark"] {
     --button-bg: #1a1a1a; --button-color: #ffffff;
   }
+}
+
+/* base */
+@layer base {
+  :root { --space-sm: 0.5rem; --space-md: 1rem; }
 }
       </code>
     </pre>
@@ -898,7 +956,7 @@ button[is="themed-button"] {
 
   <section>
     <h4>State driven styling</h4>
-    <pre>      <code class="hljs css" data-trim="" data-line-numbers="">
+    <pre>      <code class="hljs css" data-trim="" data-line-numbers="|1-9|11-18">
 /* data-* states */
 button[is="toggle-button"][data-state="active"] {
   background: var(--active-bg);
@@ -970,7 +1028,7 @@ customElements.define('theme-toggle', ThemeToggle, { extends: 'button' });
     <h4>
       Expected Question #1: <br>
       "Nice, so do I have to write <br>
-      all this `<mark>boilerplate</mark>` code... <span class="fragment"><mark>every time</mark>??"</span>
+      all this `<mark>boilerplate</mark>` code? <span class="fragment"><mark>every time</mark>??"</span>
     </h4>
   </section>
   <section>
@@ -997,17 +1055,9 @@ customElements.define('theme-toggle', ThemeToggle, { extends: 'button' });
     <h3>Hell, <mark>yeah</mark> 🔥!</h3>
   </section>
   <section>
-    <h4>
-      This sounds like a huge <br>
-      <mark>"vanilla" ice cream</mark> 🍦, uh?
-    </h4>
-  </section>
-  <section>
-    <h3>
-      .talk:is(:not(<mark>[enough]</mark>));
-      <br>
-      showMe(<mark>'the &lt;code&gt;&lt;/code&gt;'</mark>);
-    </h3>
+    <figure>
+      <img src="hans-gruber-enough-jokes.d38cd456.gif" alt="Hans Gruber saying: 'Enough jokes'" width="80%">
+    </figure>
   </section>
   <section>
     <h4>First of all, <mark>extend native HTML</mark> elements</h4>
@@ -1022,6 +1072,11 @@ export class PixDetails extends HTMLDetailsElement {}
       </code> 
     </pre>
     <h4 balance="" class="fragment">Yes, no base classes === no centralization</h4>
+  </section>
+  <section>
+    <h4 balance="">
+      So how can we centralize common features like <mark>registration</mark>, <mark>attributes handling</mark>, <mark>events handling</mark>, <mark>lifecycle methods</mark>... without base classes?
+    </h4>
   </section>
   <section>
     <h4>
@@ -1052,6 +1107,11 @@ export class Button extends HTMLButtonElement {
 // ehm... static initialization blocks!
   </code>
     </pre>
+  </section>
+  <section>
+    <figure>
+      <img src="john-mc-clane-oops.b0a5827a.gif" alt="John McClane saying: 'Oops'" width="80%">
+    </figure>
   </section>
   <section>
     <h4><mark>Decorators</mark>? <mark>Mixins</mark>?</h4>
@@ -1098,6 +1158,11 @@ export function applyMixins(component) {
 // ehm... vanilla decorators and mixins!
   </code>
     </pre>
+  </section>
+  <section>
+    <figure>
+      <img src="john-mc-clane-oops.b0a5827a.gif" alt="John McClane saying: 'Oops'" width="80%">
+    </figure>
   </section>
   <section>
     <h4>Metaprogramming!</h4>
@@ -1149,6 +1214,11 @@ class Button extends HTMLButtonElement {
     </pre>
   </section>
   <section>
+    <figure>
+      <img src="john-mc-clane-oops.b0a5827a.gif" alt="John McClane saying: 'Oops'" width="80%">
+    </figure>
+  </section>
+  <section>
     <h4><mark>Lifecycle</mark> methods?</h4>
     <pre class="fragment">      <code class="hljs javascript" data-trim="" data-line-numbers="|6-8|9-13|14-18|3-5|22-23">
 export function buildLifecycleMethods(component) {
@@ -1176,6 +1246,11 @@ export function buildLifecycleMethods(component) {
 // ehm... vanilla lifecycle methods!
       </code>
     </pre>
+  </section>
+  <section>
+    <figure>
+      <img src="john-mc-clane-oops.b0a5827a.gif" alt="John McClane saying: 'Oops'" width="80%">
+    </figure>
   </section>
   <section>
     <h4>Reactivity &amp; two-way data binding</h4>
@@ -1604,8 +1679,8 @@ document.getElementById('dec')?.addEventListener('click', () => state.count--);
   <comparison links="">
     <figure>
       <picture>
-        <source srcset="slides.5d0f24e5.webp" type="image/webp">
-        <img src="slides.283bb78b.png" alt="Slides">
+        <source srcset="slides.e301738c.webp" type="image/webp">
+        <img src="slides.ac9e99b7.png" alt="Slides">
       </picture>
       <figcaption>
         <small>Slides</small>
@@ -1613,8 +1688,8 @@ document.getElementById('dec')?.addEventListener('click', () => state.count--);
     </figure>
     <figure>
       <picture>
-        <source srcset="slides-repo.8f28139d.webp" type="image/webp">
-        <img src="slides-repo.6688a3f3.png" alt="Slides Repo on Github">
+        <source srcset="slides-repo.257880bd.webp" type="image/webp">
+        <img src="slides-repo.81dcbfa4.png" alt="Slides Repo on Github">
       </picture>
       <figcaption>
         <small>Slides Repo</small>
@@ -1751,7 +1826,7 @@ document.getElementById('dec')?.addEventListener('click', () => state.count--);
 </a>
 
     </main>
-    <script src="custom-elements-and-beyond.af4fdd44.js" type="module"></script>
+    <script src="talk-custom-elements-and-beyond.2d2a05b2.js" type="module"></script>
   
 
 </body></html>
