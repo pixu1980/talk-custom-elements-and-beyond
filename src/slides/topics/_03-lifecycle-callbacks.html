@@ -1,96 +1,50 @@
 <section>
   <section>
     <h3>Lifecycle <mark>Callbacks</mark></h3>
+    <small align="left" balance>
+      <ol>
+        <li class="fragment"><mark>constructor()</mark>: element created, state only, prefer no DOM or attributes</li>
+        <li class="fragment"><mark>connectedCallback()</mark>: inserted into the DOM, render and attach listeners here</li>
+        <li class="fragment"><mark>attributeChangedCallback()</mark>: an observed attribute changes, update the element accordingly</li>
+        <li class="fragment"><mark>disconnectedCallback()</mark>: removed from the DOM, clean up listeners, timers, observers</li>
+      </ol>
+    </small>
+    <aside class="notes">Understanding the lifecycle is crucial for proper resource management and avoiding memory leaks.</aside>
   </section>
+
   <section>
-    <h4><code>constructor()</code></h4>
-    <small balance>Called when element is created</small>
-    <pre><code class="hljs javascript" data-trim data-line-numbers>
+    <h4>All <mark>four lifecycle</mark> callbacks in a class</h4>
+    <pre>
+      <code class="hljs language-javascript" data-trim data-line-numbers="|1-6|8-12|14-18|20-26">
 class PixButton extends HTMLButtonElement {
   constructor() {
     super();
-    
-    // Initialize state
+    // initialize state only, no DOM here
     this.count = 0;
   }
-  
-  ...
-}
-    </code></pre>
-  </section>
-  <section>
-    <h4><code>connectedCallback()</code></h4>
-    <small balance>Called when element is <mark>inserted into DOM</mark></small>
-    <pre><code class="hljs javascript" data-trim data-line-numbers>
-class PixButton extends HTMLButtonElement {
-  ...
-  
-  // Element added to DOM
-  connectedCallback() {
-    // Initial render
-    this.render();
 
-    // Attach event listeners
+  connectedCallback() {
+    // DOM and attributes are ready: render + attach listeners
+    this.render();
     this.addEventListener('click', this.handleClick);
-    
-    // Safe to access DOM and attributes here
-    console.log(this.getAttribute('value'));
   }
-  
-  ...
-  
-}
-    </code></pre>
-  </section>
-  <section>
-    <h4><code>disconnectedCallback()</code></h4>
-    <small balance>Called when element is <mark>removed from DOM</mark></small>
-    <pre><code class="hljs javascript" data-trim data-line-numbers>
-class PixButton extends HTMLButtonElement {
-  
-  ...
-  
-  // Element removed from DOM
+
   disconnectedCallback() {
-    // Remove event listeners
+    // remove listeners and clear timers/observers
     this.removeEventListener('click', this.handleClick);
-    
-    // Clean up resources, timers, observers
     this.interval && clearInterval(this.interval);
   }
-  
-  ...
-}
-    </code></pre>
-  </section>
-  <section>
-    <h4><code>attributeChangedCallback()</code></h4>
-    <small balance>Called when <mark>observed attributes</mark> change</small>
-    <pre><code class="hljs language-javascript" data-trim data-line-numbers>
-class PixButton extends HTMLButtonElement {
 
-  ...
-  
-  // Specify observed attributes
   static get observedAttributes() {
     return ['value', 'disabled'];
   }
 
-  // Called when observed attributes change
   attributeChangedCallback(name, oldValue, newValue) {
     name === 'value' && this.updateValue(newValue);
   }
 }
-    </code></pre>
-  </section>
-  <section>
-    <h4>Lifecycle <mark>Timeline</mark></h4>
-    <small align="left">
-      <p>1️⃣ <mark>constructor()</mark> - Element created</p>
-      <p>2️⃣ <mark>connectedCallback()</mark> - Added to DOM</p>
-      <p>3️⃣ <mark>attributeChangedCallback()</mark> - Attributes change</p>
-      <p>4️⃣ <mark>disconnectedCallback()</mark> - Removed from DOM</p>
-    </small>
-    <aside class="notes">Understanding the lifecycle is crucial for proper resource management and avoiding memory leaks.</aside>
+
+      </code>
+    </pre>
   </section>
 </section>

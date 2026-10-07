@@ -1,64 +1,95 @@
 <section>
   <section>
     <h4>Defining a <mark>customElement</mark></h4>
+    <small>
+      <ul>
+        <li class="fragment">
+          <mark>Autonomous</mark>: a brand new tag <br />
+          e.g. <mark>&lt;pix-button&gt;</mark>
+        </li>
+        <li class="fragment">
+          <mark>Customized built-in</mark>: an existing tag <br />
+          e.g. <mark>&lt;button is="pix-button"&gt;</mark>
+        </li>
+      </ul>
+    </small>
   </section>
+
   <section>
-    <pre>
-      <code class="hljs language-javascript" data-trim data-line-numbers="1-7|9-12|14-17|19-23">
-// standard way to define custom elements
-class PixButtonStd extends HTMLButtonElement {
-  constructor() {
-    super();    
-    this.setAttribute('type', 'button');
-  }
-}
-
-// register in the standard way
-customElements.define(
-  'pix-button-std', PixButtonStd
-);
-
-// usage
-&lt;pix-button-std&gt;
-  Click me!
-&lt;/pix-button-std&gt;
-
-// runtime
-&lt;pix-button-std type="button"&gt;
-  Click me!
-&lt;/pix-button-std&gt;
-      </code>
-    </pre>
-  </section>
-  <section>
-    <pre>
-      <code class="hljs language-javascript" data-trim data-line-numbers="1-7|9-13|15-18|20-23">
-// extends pattern way to define custom elements
+    <h4><mark>Autonomous</mark> vs <mark>customized built-in</mark></h4>
+    <comparison>
+      <left>
+        <pre style="max-width: 100%; font-size: 0.435em">
+      <code class="hljs language-javascript" data-trim>
+// autonomous custom element
 class PixButton extends HTMLButtonElement {
   constructor() {
-    super();    
+    super();
     this.setAttribute('type', 'button');
   }
 }
+
+customElements.define('pix-button', PixButton);
   
-// register with the extends option
-customElements.define(
-  'pix-button', PixButton,
-  { extends: 'button' }
-);
-
 // usage
-&lt;button is="pix-button"&gt;
-  Click me!
-&lt;/button&gt;
-
-// runtime
-&lt;button is="pix-button" type="button"&gt;
-  Click me!
-&lt;/button&gt;
+&lt;pix-button&gt;Click me!&lt;/pix-button&gt;
       </code>
     </pre>
+      </left>
+      <right>
+        <pre style="max-width: 100%; font-size: 0.435em">
+      <code class="hljs language-javascript" data-trim>
+// customized built-in element
+class PixButton extends HTMLButtonElement {
+  constructor() {
+    super();
+    this.setAttribute('type', 'button');
+  }
+}
+
+customElements.define('pix-button', PixButton, { extends: 'button' });
+
+// usage
+&lt;button is="pix-button"&gt;Click me!&lt;/button&gt;
+      </code>
+    </pre>
+      </right>
+    </comparison>
   </section>
+  <section>
+    <h4>Choosing the right <mark>base</mark></h4>
+    <table data-demo="base">
+      <tr>
+        <th scope="col">Element</th>
+        <th scope="col">Use when you need</th>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;button&gt;</mark></td>
+        <td>Clickable actions, form submission</td>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;input&gt;</mark></td>
+        <td>User input, form data, validation</td>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;div&gt;</mark></td>
+        <td>Generic container, layout</td>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;a&gt;</mark></td>
+        <td>Navigation, links</td>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;img&gt;</mark></td>
+        <td>Image display with enhancements</td>
+      </tr>
+    </table>
+  </section>
+  <section>
+    <h4>Choosing the right <mark>base</mark></h4>
+    <small balance class="fragment"> 💡 <strong>Just an advice:</strong> always extend the most <mark>semantic</mark> element, the closest one to your <mark>use case</mark> </small>
+  </section>
+  <!-- 
   <section>
     <p>Can you see the <mark>difference</mark>?</p>
     <small>
@@ -69,5 +100,5 @@ customElements.define(
       </ul>
     </small>
     <aside class="notes">customElements let us extend native HTML elements with custom behavior while maintaining all their built-in functionality, accessibility, and browser support.</aside>
-  </section>
+  </section> -->
 </section>

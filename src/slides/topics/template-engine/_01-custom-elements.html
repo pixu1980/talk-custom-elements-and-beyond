@@ -1,0 +1,31 @@
+<section data-topic="template-engine" data-menu-title="Custom elements">
+  <h4 balance>A template inside a <mark>custom element</mark></h4>
+  <small balance>
+    A component declares <mark>metadata</mark>, a <mark>static {}</mark> registration and a <mark>render(state)</mark>. The decorator wires live rendering on <mark>store:change</mark>: no manual
+    listeners, no <code>innerHTML</code>.
+  </small>
+</section>
+
+<section data-topic="template-engine" data-menu-title="Custom elements">
+  <pre>
+    <code data-trim data-line-numbers="|6-10|12-14" class="hljs javascript">
+import { html } from "@/core/index.js";
+import { componentDecorator } from "@/lib/component-decorator.js";
+
+/** Summary stat cards. */
+export class CebStatsRow extends HTMLElement {
+  static name = "ceb-stats-row";
+
+  static {
+    componentDecorator("StatsRow", CebStatsRow);
+  }
+
+  render(state) {
+    return html`&lt;p&gt;Total: ${state.todos.length}&lt;/p&gt;`;
+  }
+}
+
+    </code>
+  </pre>
+  <small balance class="fragment">The engine diffs by <mark>part</mark>: only the changed nodes are committed, and inputs keep focus and caret.</small>
+</section>

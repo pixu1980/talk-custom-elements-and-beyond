@@ -1,0 +1,21 @@
+<section data-topic="store" data-menu-title="CustomEvent">
+  <h4 balance><mark>emitChange()</mark>: the store speaks with <mark>CustomEvent</mark></h4>
+  <pre>
+    <code data-trim data-line-numbers="|3-7|9-12" class="hljs javascript">
+#emitChange(path, oldValue, newValue) {
+  // A single, explicit event for every successful write.
+  const detail = {
+    path: pathToString(path),
+    oldValue: deepClone(oldValue),
+    newValue: deepClone(newValue),
+  };
+
+  // EventTarget keeps persistence, logging and the
+  // custom elements decoupled from the store itself.
+  this.events.dispatchEvent(
+    new CustomEvent("store:change", { detail }),
+  );
+}
+    </code>
+  </pre>
+</section>

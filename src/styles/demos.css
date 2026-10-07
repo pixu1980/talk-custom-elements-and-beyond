@@ -1,0 +1,64 @@
+/**
+ * Demo styling for the live customized built-in elements shown in the topic slides.
+ * Scope: counter and icon buttons, date input, collapsible details and safe links.
+ * Element + attribute selectors only: no classes, no inline styles.
+ */
+
+/* Buttons */
+button[is='counter-button'],
+button[is='icon-button'] {
+  padding: 1rem 2rem;
+  font-size: 2rem;
+}
+
+button[is='icon-button'] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+button[is='icon-button'] > span {
+  display: inline-block;
+  inline-size: 1em;
+  text-align: center;
+}
+
+/* Inputs */
+input[is='date-input'] {
+  margin-block-start: 1rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 2.5rem;
+}
+
+/* Details */
+details[is='collapsible-panel'] {
+  display: flex;
+  flex-flow: column nowrap;
+  inline-size: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 6px;
+  text-align: start;
+}
+
+details[is='collapsible-panel'] > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+details[is='collapsible-panel'] > summary::marker {
+  content: '';
+}
+
+/* Links */
+a[is='safe-link'] {
+  font-size: 2rem;
+}
+
+/* Tables */
+table[data-demo] {
+  font-size: 0.7em;
+}

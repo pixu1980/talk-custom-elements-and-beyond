@@ -1,0 +1,18 @@
+<section data-topic="template-engine" data-menu-title="html tag">
+  <h3>The <mark>Template Engine</mark></h3>
+</section>
+
+<section data-topic="template-engine" data-menu-title="html tag">
+  <h4 balance><mark>html</mark> tagged templates + <mark>render</mark></h4>
+  <small balance class="fragment"> A template is just a tagged template literal. <mark>render</mark> mounts it into a container and, on the next call, updates only the <mark>parts</mark> that changed. </small>
+  <pre class="fragment">
+    <code data-trim class="hljs javascript">
+const view = html`
+  <h1>${ title }</h1>
+  &lt;button @click=${() => store.state.count += 1}&gt;
+    +1
+  &lt;/button&gt;
+`;
+    </code>
+  </pre>
+</section>

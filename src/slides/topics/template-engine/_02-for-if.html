@@ -1,0 +1,24 @@
+<section data-topic="template-engine" data-menu-title="for + if">
+  <h4 balance><mark>&lt;for&gt;</mark> and <mark>&lt;if&gt;</mark> blocks</h4>
+  <small balance class="fragment">
+    Each block keeps its own <mark>DOM part</mark>, so the engine updates the existing nodes in place: focus, caret and form state survive the re-render. Inner markup uses <code>{{ }}</code>, and
+    there is no second syntax.
+  </small>
+</section>
+
+<section data-topic="template-engine" data-menu-title="for + if">
+  <pre>
+    <code class="hljs language-html" data-trim data-line-numbers="|1-4|6-9">
+&lt;!-- one block per item, keyed by id --&gt;
+&lt;for each="todo in todos"&gt;
+  &lt;li&gt;&lt;ceb-todo-item data-id="{{ todo.id }}"&gt;&lt;/ceb-todo-item&gt;&lt;/li&gt;
+&lt;/for&gt;
+
+&lt;!-- conditional block --&gt;
+&lt;if condition="isEmpty"&gt;
+  &lt;p&gt;Nothing matches the current filters yet.&lt;/p&gt;
+&lt;/if&gt;
+    </code>
+  </pre>
+  <aside class="notes">The engine parses &lt;for&gt; and &lt;if&gt; regions and reconciles them as DOM parts, keyed by item id.</aside>
+</section>

@@ -1,83 +1,78 @@
 <section>
   <section>
     <h3><mark>Attributes</mark> vs Properties</h3>
-    <p balance>Understanding the <mark>difference is key</mark> to effective customElements</p>
-  </section>
-  <section>
-    <h4>Attributes (HTML)</h4>
-    <pre><code class="hljs html" data-trim data-line-numbers>
-&lt;button is="my-button" value="42" disabled&gt;
-  Click me
-&lt;/button&gt;
-    </code></pre>
     <small>
-      <ul class="fragment">
-        <li>Always <mark>strings</mark> (or null)</li>
-        <li>Defined in <mark>HTML</mark></li>
-        <li>Accessible via <mark>getAttribute()</mark></li>
-        <li>Trigger <mark>attributeChangedCallback()</mark></li>
-      </ul>
+      <table data-demo="attributes">
+        <tr>
+          <th scope="col">Aspect</th>
+          <th scope="col">Attributes (HTML)</th>
+          <th scope="col">Properties (JS)</th>
+        </tr>
+        <tr class="fragment">
+          <th scope="row">Type</th>
+          <td>strings (or null)</td>
+          <td>any JavaScript value</td>
+        </tr>
+        <tr class="fragment">
+          <th scope="row">Defined in</th>
+          <td>HTML markup</td>
+          <td>JavaScript</td>
+        </tr>
+        <tr class="fragment">
+          <th scope="row">Access</th>
+          <td><mark>getAttribute()</mark> / <mark>setAttribute()</mark></td>
+          <td><mark>element.prop</mark></td>
+        </tr>
+        <tr class="fragment">
+          <th scope="row">Reactivity</th>
+          <td>triggers <mark>attributeChangedCallback()</mark></td>
+          <td>does not trigger callbacks</td>
+        </tr>
+      </table>
     </small>
   </section>
   <section>
-    <h4>Properties (JavaScript)</h4>
-    <pre><code class="hljs javascript" data-trim data-line-numbers>
-const button = document.querySelector('[is="my-button"]');
-
-button.value = 42;        // Number
-button.disabled = true;   // Boolean
-button.data = { foo: 'bar' }; // Object
-    </code></pre>
-    <small>
-      <ul class="fragment">
-        <li>Can be any <mark>JavaScript type</mark></li>
-        <li>Accessed in <mark>JavaScript</mark></li>
-        <li>Don't trigger callbacks automatically</li>
-      </ul>
-    </small>
-  </section>
-  <section>
-    <h4>Reflection Pattern</h4>
-    <pre><code class="hljs javascript" data-trim data-line-numbers  >
+    <h4>Reflection &amp; <mark>observed attributes</mark></h4>
+    <pre>
+      <code class="hljs language-javascript" data-trim data-line-numbers="|2-8|11-18">
 class MyButton extends HTMLButtonElement {
+  // reflection: keep property and attribute in sync
   get value() {
     return this.getAttribute('value');
   }
-  
+
   set value(val) {
     this.setAttribute('value', val);
   }
-}
-    </code></pre>
-    <small balance class="fragment">Sync properties with attributes for <mark>consistency</mark> whenever is possible/needed</small>
-  </section>
-  <section>
-    <h3>Observed Attributes & <mark>Reactivity</mark></h3>
-    <p>Make your elements <mark>respond to attribute changes</mark></p>
-  </section>
-  <section>
-    <h4><mark>Declaring</mark> observed attributes</h4>
-    <pre><code class="hljs javascript" data-trim data-line-numbers>
-class ColorButton extends HTMLButtonElement {
-  static get observedAttributes() {
-    return ['color', 'size'];
-  }
-  
-  attributeChangedCallback(name, oldValue, newValue) {
-    console.log(`${name} changed: ${oldValue} → ${newValue}`);
 
-    name === 'color' && 
-      (this.style.backgroundColor = newValue);
-      
-    name === 'size' && 
-      (this.style.fontSize = newValue);
+  // reactivity: observe only the attributes you need
+  static get observedAttributes() {
+    return ['value', 'disabled'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    name === 'value' && this.updateValue(newValue);
   }
 }
-    </code></pre>
+
+      </code>
+    </pre>
   </section>
   <section>
-    <h4>Example</h4>
-    <pre><code class="hljs javascript" data-trim data-line-numbers>
+    <h4>Reflection &amp; <mark>observed attributes</mark></h4>
+    <small>
+      <ul>
+        <li class="fragment">Use <mark>attributes</mark> for simple, serializable values</li>
+        <li class="fragment">Use <mark>properties</mark> for complex objects or functions</li>
+        <li class="fragment"><mark>Reflect</mark> simple properties to attributes when possible</li>
+      </ul>
+    </small>
+  </section>
+<!-- 
+  <section>
+    <h4>Example: a <mark>validated input</mark></h4>
+    <pre>
+      <code class="hljs language-javascript" data-trim data-line-numbers="|1-3|5-9|11-14|16-18|20-22">
 class ValidatedInput extends HTMLInputElement {
   static get observedAttributes() {
     return ['pattern', 'required'];
@@ -85,7 +80,7 @@ class ValidatedInput extends HTMLInputElement {
 
   validate() {
     const isValid = this.checkValidity();
-    this.classList.toggle('invalid', !isValid);
+
     this.setAttribute('aria-invalid', String(!isValid));
   }
 
@@ -93,53 +88,18 @@ class ValidatedInput extends HTMLInputElement {
     this.addEventListener('input', this.validate);
     this.validate();
   }
-  
+
   disconnectedCallback() {
     this.removeEventListener('input', this.validate);
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
+  attributeChangedCallback() {
     this.isConnected && this.validate();
   }
 }
-    </code></pre>
-  </section>
-  <section>
-    <h4>Usage</h4>
-    <pre><code class="hljs html" data-trim data-line-numbers>
-&lt;input 
-  is="validated-input" 
-  type="email" 
-  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-  required
-/&gt;
-    </code></pre>
-    <small balance class="fragment">Changes to <mark>pattern</mark> or <mark>required</mark> attributes automatically re-validate</small>
-  </section>
-  <section>
-    <h4>Performance <mark>tip</mark></h4>
-    <small balance>Only observe attributes you <mark>actually need to react</mark> to</small>
-    <pre><code class="hljs javascript" data-trim data-line-numbers>
-// ❌ Don't do this
-static get observedAttributes() {
-  return ['id', 'class', 'data-foo', 'data-bar', ...];
-}
 
-// ✅ Do this
-static get observedAttributes() {
-  return ['value', 'disabled']; // Only what you need
-}
-    </code></pre>
-  </section>
-  <section>
-    <h4><mark>Best</mark> Practices</h4>
-    <small>
-      <ul>
-        <li class="fragment">Use <mark>attributes</mark> for simple, serializable values</li>
-        <li class="fragment">Use <mark>properties</mark> for complex objects or functions</li>
-        <li class="fragment"><mark>Reflect</mark> simple properties to attributes <mark>when possible</mark></li>
-        <li class="fragment"><mark>Prefer native attributes</mark> element (e.g., <mark>disabled</mark>, <mark>value</mark>)</li>
-      </ul>
-    </small>
-  </section>
+      </code>
+    </pre>
+    <small class="fragment">Changes to <mark>pattern</mark> or <mark>required</mark> automatically re-validate</small>
+  </section> -->
 </section>

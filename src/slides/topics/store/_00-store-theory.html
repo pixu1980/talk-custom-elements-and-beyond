@@ -1,0 +1,50 @@
+<section data-topic="store" data-menu-title="Store theory">
+  <h3>The <mark>Store</mark></h3>
+</section>
+
+<section data-topic="store" data-menu-title="Store theory">
+  <h4 balance>What a Store <mark>actually is</mark>?</h4>
+  <small balance class="fragment">
+    A store is <mark>a shared state tree</mark> plus a <mark>notification contract</mark>: one source of <mark>truth</mark> for the data, and a predictable way to tell the rest of the app when that
+    data <mark>changes</mark>.
+  </small>
+  <!-- <small balance class="fragment">
+    In this demo it is built from three boring parts: a <mark>Proxy</mark> that intercepts writes, <mark>Reflect</mark> that performs the real operation, and a browser
+    <mark>CustomEvent</mark> that announces what happened.
+  </small> -->
+  <aside class="notes">The store is not the renderer and it is not the business logic: it is the stable place where both meet the current state.</aside>
+</section>
+
+<section data-topic="store" data-menu-title="Proxy + Reflect">
+  <h4 balance><mark>Proxy</mark> watches, <mark>Reflect</mark> does the work</h4>
+  <pre>
+    <code data-trim data-line-numbers="|2-5|12-15|14|16-21|19|24" class="hljs javascript">
+class Store {
+  constructor(initialState) {
+    this.target = deepClone(initialState);
+    this.state = this.#createProxy(this.target, []);
+  }
+
+  #createProxy(target, path) {
+    if (!isObject(target)) return target;
+    if (this.proxyCache.has(target)) return this.proxyCache.get(target);
+
+    const proxy = new Proxy(target, {
+      get: (raw, key) => {
+        const value = Reflect.get(raw, key);
+        return isObject(value) ? this.#createProxy(value, [...path, key]) : value;
+      },
+      set: (raw, key, value) => {
+        const old = raw[key];
+        const result = Reflect.set(raw, key, value);
+        if (old !== prepared) this.#emitChange([...path, key], old, value);
+        return result;
+      },
+    });
+
+    return proxy;
+  }
+}
+    </code>
+  </pre>
+</section>

@@ -1,5 +1,11 @@
 <section>
   <section>
+    <h3>
+      Some <mark>questions</mark> <br />
+      I expect from you...
+    </h3>
+  </section>
+  <section>
     <h4>
       Expected Question #1: <br />
       "Nice, so do I have to write <br />
@@ -199,6 +205,24 @@ class Button extends HTMLButtonElement {
     </figure>
   </section>
   <section>
+    <h4><mark>Lifecycle</mark> methods</h4>
+    <pre>
+      <code class="hljs javascript" data-trim>
+        element.addEventListener('eventname', eventHandler);
+      </code>
+    </pre>
+  </section>
+  <section>
+    <h4>The <mark>handleEvent</mark> pattern</h4>
+    <small balance>
+      From <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#parameters" target="_blank">MDN</a>:
+      <em
+        >The object that receives a notification (an object that implements the Event interface) when an event of the specified type occurs.
+        <u>This must be null, <mark>an object with a handleEvent() method</mark>, or a JavaScript function.</u> See The event listener callback for details on the callback itself.</em
+      >
+    </small>
+  </section>
+  <section>
     <h4><mark>Lifecycle</mark> methods?</h4>
     <pre class="fragment">
       <code class="hljs javascript" data-trim="" data-line-numbers="|6-8|9-13|14-18|3-5|22-23">
@@ -281,14 +305,18 @@ class BoundInput extends HTMLInputElement {
     if (!this._key) return;
     
     this._unsub = store.subscribe(this._key, (v) => {
-      if (this.value !== String(v ?? '')) this.value = String(v ?? '');
+      if (this.value !== String(v ?? '')) {
+        this.value = String(v ?? '');
+      }
     });
     
     this.addEventListener('input', this);
   }
   
   handleEvent(e) {
-    if (e.type === 'input' && this._key) store.state[this._key] = this.value;
+    if (e.type === 'input' && this._key) {
+      store.state[this._key] = this.value;
+    }
   }
   
   disconnectedCallback() {
@@ -323,24 +351,35 @@ class BoundText extends HTMLSpanElement {
     <h4>Reactivity & two-way data binding</h4>
     <pre>
       <code class="hljs html" data-trim data-line-numbers>
-&lt;label&gt;
-  Name:
-  &lt;input is="bound-input" type="text" data-bind="name" placeholder="Type your name" /&gt;
-&lt;/label&gt;
-&lt;label&gt;
-  Nick:
-  &lt;input is="bound-input" type="text" data-bind="nick" placeholder="Type your nick" /&gt;
-&lt;/label&gt;
-&lt;p&gt;Hello, &lt;span is="bound-text" data-bind="name"&gt;&lt;/span&gt; aka &lt;span is="bound-text" data-bind="nick"&gt;&lt;/span&gt;!&lt;/p&gt;
+        &lt;label&gt;
+          Name:
+          &lt;input is="bound-input" type="text" data-bind="name" placeholder="Type your name" /&gt;
+        &lt;/label&gt;
+        &lt;label&gt;
+          Nick:
+          &lt;input is="bound-input" type="text" data-bind="nick" placeholder="Type your nick" /&gt;
+        &lt;/label&gt;
+        &lt;p&gt;
+          Hello,
+          &lt;span is="bound-text" data-bind="name"&gt;&lt;/span&gt;
+          aka &lt;span is="bound-text" data-bind="nick"&gt;&lt;/span&gt;!
+        &lt;/p&gt;
       </code>
     </pre>
+  </section>
+  <section>
+    <h4>Reactivity & two-way data binding</h4>
     <pre>
-      <code class="hljs javascript" data-trim data-line-numbers="|7-8">
+      <code class="hljs javascript" data-trim data-line-numbers>
 // Store singleton for the page
 const store = createStore({ name: '', nick: '' });
 
-customElements.define('bound-input', BoundInput, { extends: 'input' });
-customElements.define('bound-text', BoundText, { extends: 'span' });
+customElements.define('bound-input', BoundInput, { 
+  extends: 'input'
+});
+customElements.define('bound-text', BoundText, { 
+  extends: 'span' 
+});
 
 // Yippie Kai Yay... motherf... 
 // vanilla reactivity & two-way data binding!

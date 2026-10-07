@@ -1,0 +1,33 @@
+<section data-topic="template-engine" data-menu-title="Bindings">
+  <h4 balance><mark>Declarative</mark> form bindings</h4>
+  <small balance>
+    The store is the single source of truth: <mark>value</mark> / <mark>checked</mark> read it, <mark>@input</mark> / <mark>@change</mark> write it. No <mark>model</mark> directive, no hidden two-way
+    magic.
+  </small>
+</section>
+
+<section data-topic="template-engine" data-menu-title="Bindings">
+  <pre>
+    <code data-trim data-line-numbers="|1-5|7-11|13-19" class="hljs language-html">
+      &lt;!-- input: value reads, @input writes --&gt;
+      &lt;input value="${todo.title}"
+        @input=${(e) =&gt; updateTodo(id, { 
+          title: e.currentTarget.value 
+        })} /&gt;
+
+      &lt;!-- checkbox: checked + @change --&gt;
+      &lt;input type="checkbox" checked=${todo.completed}
+        @change=${(e) =&gt; updateTodo(id, { 
+          completed: e.currentTarget.checked 
+        })} /&gt;
+
+      &lt;!-- select: data-value applied after the options render --&gt;
+      &lt;select data-value="${todo.priority}"
+      @change=${(e) =&gt; updateTodo(id, { 
+          priority: e.currentTarget.value 
+        })}&gt;
+        <!-- ...priorityOptions -->
+      &lt;/select&gt;
+    </code>
+  </pre>
+</section>
