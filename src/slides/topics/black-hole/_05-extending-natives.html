@@ -1,0 +1,155 @@
+<section>
+  <!-- <section>
+    <h4>Extending <mark>button</mark></h4>
+      <article>
+        <pre>
+          <code class="hljs language-javascript" data-trim>
+class IconButton extends HTMLButtonElement {
+  connectedCallback() {
+    const icon = this.getAttribute('icon') ?? '';
+    const text = this.textContent;
+
+    this.innerHTML = `
+      &lt;span class="icon"&gt;${icon}&lt;/span&gt;
+      ${text}
+    `;
+  }
+}
+
+customElements.define('icon-button', IconButton, {
+  extends: 'button'
+});
+          </code>
+        </pre>
+        <p>
+          <button is="icon-button" icon="🚀">Launch</button>
+          <button is="icon-button" icon="✨">Shine</button>
+        </p>
+        <small class="fragment">✅ click events, form submission, keyboard support, disabled state</small>
+      </article>
+  </section>
+  <section>
+    <h4>Extending <mark>input</mark></h4>
+      <article>
+        <pre>
+          <code class="hljs language-javascript" data-trim>
+class DateInput extends HTMLInputElement {
+  connectedCallback() {
+    this.type = 'date';
+    this.setAttribute('aria-label', 'Select date');
+
+    this.addEventListener('change', () => {
+      console.log('Date selected:', this.value);
+    });
+  }
+}
+
+customElements.define('date-input', DateInput, {
+  extends: 'input'
+});
+          </code>
+        </pre>
+        <p>
+          <label for="date-demo">Pick a date</label>
+          <input is="date-input" id="date-demo" />
+        </p>
+        <small class="fragment">✅ form integration, validation, value property, focus management</small>
+      </article>
+    </section>
+  </section> -->
+<!-- 
+  <section>
+    <h4>Extending <mark>semantic</mark> elements &amp; <mark>links</mark></h4>
+    <comparison>
+      <article>
+        <h5><mark>Details</mark></h5>
+        <pre>
+          <code class="hljs language-javascript" data-trim>
+class CollapsiblePanel extends HTMLDetailsElement {
+  connectedCallback() {
+    this.setAttribute('role', 'region');
+
+    const header = this.querySelector('[slot="header"]');
+    header?.addEventListener('click', () => {
+      this.classList.toggle('collapsed');
+      this.setAttribute(
+        'aria-expanded',
+        String(!this.classList.contains('collapsed'))
+      );
+    });
+  }
+}
+
+customElements.define('collapsible-panel', CollapsiblePanel, {
+  extends: 'details'
+});
+          </code>
+        </pre>
+        <details is="collapsible-panel" open>
+          <summary><small>Toggle</small></summary>
+          <small>This content is shown or hidden when you press Toggle.</small>
+        </details>
+      </article>
+      <article>
+        <h5><mark>Links</mark></h5>
+        <pre>
+          <code class="hljs language-javascript" data-trim>
+class SafeLink extends HTMLAnchorElement {
+  connectedCallback() {
+    if (this.target === '_blank') {
+      const rel = new Set(
+        (this.getAttribute('rel') || '')
+          .split(/\s+/).filter(Boolean)
+      );
+
+      rel.add('noopener');
+      rel.add('noreferrer');
+      this.setAttribute('rel', Array.from(rel).join(' '));
+    }
+  }
+}
+
+customElements.define('safe-link', SafeLink, { extends: 'a' });
+          </code>
+        </pre>
+        <p>
+          <a is="safe-link" href="https://example.com" target="_blank">External link</a>
+        </p>
+      </article>
+    </comparison>
+  </section> -->
+
+  <section>
+    <h4>Choosing the right <mark>base</mark></h4>
+    <table data-demo="base">
+      <tr>
+        <th scope="col">Element</th>
+        <th scope="col">Use when you need</th>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;button&gt;</mark></td>
+        <td>Clickable actions, form submission</td>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;input&gt;</mark></td>
+        <td>User input, form data, validation</td>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;div&gt;</mark></td>
+        <td>Generic container, layout</td>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;a&gt;</mark></td>
+        <td>Navigation, links</td>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;img&gt;</mark></td>
+        <td>Image display with enhancements</td>
+      </tr>
+    </table>
+  </section>
+  <section>
+    <h4>Choosing the right <mark>base</mark></h4>
+    <small balance class="fragment"> 💡 <strong>Just an advice:</strong> always extend the most <mark>semantic</mark> element, the closest one to your <mark>use case</mark> </small>
+  </section>
+</section>
