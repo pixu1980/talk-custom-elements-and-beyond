@@ -1,4 +1,4 @@
-# customElements & beyond: a lean way to build reactive apps in vanillaJS — Talk Structure (Pixu‑style)
+# customElements & beyond: a lean way to build reactive apps in vanillaJS - Talk Structure (Pixu‑style)
 
 > Duration: **45 min (incl. Q&A)** · Audience: **Intermediate Frontend** · Format: **Standard Talk**
 
@@ -15,7 +15,7 @@
 - **37:00–42:00 · Mini Demos (Live) + A11y Checks**
 - **42:00–45:00 · Q&A + Takeaways**
 
-[MEME_PLACEHOLDER: "You don’t need a framework to ship" — parody of a package‑install progress bar stuck at 99%]
+[MEME_PLACEHOLDER: "You don’t need a framework to ship" - parody of a package‑install progress bar stuck at 99%]
 
 ---
 
@@ -29,9 +29,9 @@
 
 ---
 
-## 1) Cold Open — The Premise (00:00–03:00)
+## 1) Cold Open - The Premise (00:00–03:00)
 
-- Story: The myth — “no framework ⇒ no app”.
+- Story: The myth - “no framework ⇒ no app”.
 - Reveal thesis: **Browsers already ship the batteries.**
 - Quick demo preview: buttons that count, filters that re‑render lists, a basic router.
 
@@ -366,11 +366,11 @@ A11y: native semantics for `button`, `nav`, and focus trapping not required for 
 
 ## 10) Slide‑by‑Slide Beat Sheet (Draft)
 
-1. Title — **customElements & beyond**  
+1. Title - **customElements & beyond**  
    [MEME: Queen cover parody “Vanilla Rhapsody”]
 2. Thesis: **Lean ≠ Barebones**  
    [MEME: “More with less” LEGO minimal build]
-3. Constraint card — no Shadow DOM, no <template>, only `is`  
+3. Constraint card - no Shadow DOM, no <template>, only `is`  
    [Meme caption overlay]
 4. Customized built‑ins: why they rock
 5. Counter Button code (short)

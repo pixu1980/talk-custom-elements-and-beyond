@@ -129,7 +129,7 @@ Each slide must follow these principles:
 
 - **All files must be in English**: slide content, comments, scripts, and styles
 - When adding or editing content, translate any non-English text to English
-- Do not use typographic dashes (em dash —, en dash –) or non-breaking hyphens (‑)
+- Do not use typographic dashes (em dash -, en dash –) or non-breaking hyphens (‑)
 - Use only the ASCII hyphen-minus (-) character
 - Avoid hyphenated compound adjectives in English copy (use "production ready" not "production ready")
 
