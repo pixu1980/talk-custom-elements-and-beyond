@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="it"><head>
+<!DOCTYPE html><html lang="it"><head><script type="importmap">{"imports":{"RUhTQ":"/talk-custom-elements-and-beyond.dd61bbfa.js","pTTrj":"/talk-custom-elements-and-beyond.df678803.js"}}</script><script type="module" src="/talk-custom-elements-and-beyond.dd61bbfa.js"></script><script type="module" src="/talk-custom-elements-and-beyond.df678803.js"></script>
     <meta charset="utf-8">
     <title>customElements &amp; beyond</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="talk-custom-elements-and-beyond.e122dde0.css">
+    <link rel="stylesheet" href="/talk-custom-elements-and-beyond.ebeadb08.css">
   </head>
   <body>
     <main class="reveal">
@@ -29,48 +29,54 @@
       <left>
         <figure>
           <picture>
-            <source srcset="pixu.ea6d4c65.webp" type="image/webp">
-            <img src="pixu.06482de6.jpg" alt="Pixu">
+            <source srcset="/pixu.8dc4bcd7.webp" type="image/webp">
+            <img src="/pixu.8cd71433.jpg" alt="Pixu">
           </picture>
         </figure>
         <h3>Emiliano <mark>Pisu</mark></h3>
         <small balance="" class="fragment">
-          <p><mark>Father</mark> of 2 lovely "monsters"</p>
-          <p><mark>D&amp;D</mark> master, player ... whatever</p>
-          <p>
-            Senior <mark>Design Engineer</mark>, <mark>Sensei</mark> &amp; Co-Host
-            <br>
-            @ Dev <mark>Dojo</mark> IT
-          </p>
+          <mark>Father</mark> of 2 lovely "monsters"
+          <br>
+          <mark>D&amp;D</mark> master, player ... whatever
+        </small>
+        <small class="fragment">
+          Head of <mark>DevX</mark> &amp; <mark>AI</mark> Engineer
+          <br>
+          @ <mark>Webidoo</mark> Engineering
+        </small>
+        <small class="fragment">
+          <mark>Sensei</mark> &amp; Co-Host
+          <br>
+          @ Dev <mark>Dojo</mark> IT
         </small>
       </left>
       <right class="fragment">
         <h6>
-          <img src="linkedin.51093a7b.svg" alt="pixu1980@linkedin">
+          <img src="/linkedin.1b8d1573.svg" alt="pixu1980@linkedin">
           linkedin.com/in/pixu1980
         </h6>
         <h6>
-          <img src="github.21123c11.svg" alt="pixu1980@github">
+          <img src="/github.dd65c88f.svg" alt="pixu1980@github">
           github.com/pixu1980
         </h6>
         <h6>
-          <img src="codepen.4a2f346e.svg" alt="pixu1980@codepen">
+          <img src="/codepen.1d70fbe2.svg" alt="pixu1980@codepen">
           codepen.io/pixu1980
         </h6>
         <h6>
-          <img src="linkedin.51093a7b.svg" alt="devdojo@linkedin">
+          <img src="/linkedin.1b8d1573.svg" alt="devdojo@linkedin">
           linkedin.com/company/dev-dojo-it/
         </h6>
         <h6>
-          <img src="youtube.4857fd9d.svg" alt="devdojo@youtube">
+          <img src="/youtube.33d88a05.svg" alt="devdojo@youtube">
           youtube.com/@devdojo_it
         </h6>
         <h6>
-          <img src="twitch.3c1587e7.svg" alt="devdojo@twitch">
+          <img src="/twitch.b8c97bdd.svg" alt="devdojo@twitch">
           twitch.tv/devdojo_it
         </h6>
         <h6>
-          <img src="telegram.6f39ff43.svg" alt="devdojo@telegram">
+          <img src="/telegram.baf0a86a.svg" alt="devdojo@telegram">
           @devdojo_it
         </h6>
       </right>
@@ -84,7 +90,7 @@
   </section>
   <section>
     <figure>
-      <img src="john-mc-clane-epiphany.f49eccbe.gif" alt="John McClane having an epiphany" width="60%">
+      <img src="/john-mc-clane-epiphany.0b1e5431.gif" alt="John McClane having an epiphany" width="60%">
     </figure>
   </section>
   <section>
@@ -93,7 +99,7 @@
   </section>
   <section>
     <figure>
-      <img src="hans-gruber.dab6fa78.gif" alt="Hans Gruber from Die Hard feeling a shiver" width="60%">
+      <img src="/hans-gruber.87c3731e.gif" alt="Hans Gruber from Die Hard feeling a shiver" width="60%">
     </figure>
   </section>
   <section>
@@ -105,7 +111,7 @@
   </section>
   <section>
     <figure>
-      <img src="simon-peter-gruber.f74badd9.gif" alt="Simon Peter Gruber saying: 'Somebody had some fun here'" width="70%">
+      <img src="/simon-peter-gruber.5cf6e442.gif" alt="Simon Peter Gruber saying: 'Somebody had some fun here'" width="70%">
     </figure>
   </section>
   <section>
@@ -167,62 +173,93 @@
 <section>
   <section>
     <h4>Defining a <mark>customElement</mark></h4>
+    <small>
+      <ul>
+        <li class="fragment">
+          <mark>Autonomous</mark>: a brand new tag <br>
+          e.g. <mark>&lt;pix-button&gt;</mark>
+        </li>
+        <li class="fragment">
+          <mark>Customized built-in</mark>: an existing tag <br>
+          e.g. <mark>&lt;button is="pix-button"&gt;</mark>
+        </li>
+      </ul>
+    </small>
   </section>
+
   <section>
-    <pre>      <code class="hljs language-javascript" data-trim="" data-line-numbers="1-7|9-12|14-17|19-23">
-// standard way to define custom elements
-class PixButtonStd extends HTMLButtonElement {
-  constructor() {
-    super();    
-    this.setAttribute('type', 'button');
-  }
-}
-
-// register in the standard way
-customElements.define(
-  'pix-button-std', PixButtonStd
-);
-
-// usage
-&lt;pix-button-std&gt;
-  Click me!
-&lt;/pix-button-std&gt;
-
-// runtime
-&lt;pix-button-std type="button"&gt;
-  Click me!
-&lt;/pix-button-std&gt;
-      </code>
-    </pre>
-  </section>
-  <section>
-    <pre>      <code class="hljs language-javascript" data-trim="" data-line-numbers="1-7|9-13|15-18|20-23">
-// extends pattern way to define custom elements
+    <h4><mark>Autonomous</mark> vs <mark>customized built-in</mark></h4>
+    <comparison>
+      <left>
+        <pre style="max-width: 100%; font-size: .435em">      <code class="hljs language-javascript" data-trim="">
+// autonomous custom element
 class PixButton extends HTMLButtonElement {
   constructor() {
-    super();    
+    super();
     this.setAttribute('type', 'button');
   }
 }
+
+customElements.define('pix-button', PixButton);
   
-// register with the extends option
-customElements.define(
-  'pix-button', PixButton,
-  { extends: 'button' }
-);
-
 // usage
-&lt;button is="pix-button"&gt;
-  Click me!
-&lt;/button&gt;
-
-// runtime
-&lt;button is="pix-button" type="button"&gt;
-  Click me!
-&lt;/button&gt;
+&lt;pix-button&gt;Click me!&lt;/pix-button&gt;
       </code>
     </pre>
+      </left>
+      <right>
+        <pre style="max-width: 100%; font-size: .435em">      <code class="hljs language-javascript" data-trim="">
+// customized built-in element
+class PixButton extends HTMLButtonElement {
+  constructor() {
+    super();
+    this.setAttribute('type', 'button');
+  }
+}
+
+customElements.define('pix-button', PixButton, { extends: 'button' });
+
+// usage
+&lt;button is="pix-button"&gt;Click me!&lt;/button&gt;
+      </code>
+    </pre>
+      </right>
+    </comparison>
   </section>
+  <section>
+    <h4>Choosing the right <mark>base</mark></h4>
+    <table data-demo="base">
+      <tbody><tr>
+        <th scope="col">Element</th>
+        <th scope="col">Use when you need</th>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;button&gt;</mark></td>
+        <td>Clickable actions, form submission</td>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;input&gt;</mark></td>
+        <td>User input, form data, validation</td>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;div&gt;</mark></td>
+        <td>Generic container, layout</td>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;a&gt;</mark></td>
+        <td>Navigation, links</td>
+      </tr>
+      <tr class="fragment">
+        <td><mark>&lt;img&gt;</mark></td>
+        <td>Image display with enhancements</td>
+      </tr>
+    </tbody></table>
+  </section>
+  <section>
+    <h4>Choosing the right <mark>base</mark></h4>
+    <small balance="" class="fragment"> 💡 <strong>Just an advice:</strong> always extend the most <mark>semantic</mark> element, the closest one to your <mark>use case</mark> </small>
+  </section>
+  <!-- 
   <section>
     <p>Can you see the <mark>difference</mark>?</p>
     <small>
@@ -233,19 +270,14 @@ customElements.define(
       </ul>
     </small>
     <aside class="notes">customElements let us extend native HTML elements with custom behavior while maintaining all their built-in functionality, accessibility, and browser support.</aside>
-  </section>
+  </section> -->
 </section>
 
 <section>
   <section>
-    <h3>
-      Building a Click counter <br>
-      <mark>Custom Element</mark>
-    </h3>
-  </section>
-  <section>
-    <h4>Step 1: <mark>Define</mark> the class</h4>
-    <pre>      <code class="hljs language-javascript" data-trim="" data-line-numbers="|2-5|7-9|11-14|16-18">
+    <h4>First Touch: a <mark>Click</mark> Counter</h4>
+    <pre>      <code class="hljs language-javascript" data-trim="" data-line-numbers="|1-6|8-10|12-15|17-19|22-25|27-28">
+// 1. define the class
 class CounterButton extends HTMLButtonElement {
   constructor() {
     super();
@@ -256,7 +288,7 @@ class CounterButton extends HTMLButtonElement {
     this.addEventListener('click', this.handleClick);
   }
 
-  handleClick() {
+  handleClick = () =&gt; {
     this.count++;
     this.updateText();
   };
@@ -265,28 +297,21 @@ class CounterButton extends HTMLButtonElement {
     this.textContent = `Clicked ${this.count} times`;
   }
 }
-      </code>
-    </pre>
-  </section>
-  <section>
-    <h4>Step 2: <mark>Register</mark> the element</h4>
-    <pre>      <code class="hljs language-javascript" data-trim="" data-line-numbers="">
+
+// 2. register the element
 customElements.define('counter-button', CounterButton, {
   extends: 'button'
 });
-      </code>
-    </pre>
-  </section>
-  <section>
-    <h4>Step 3: <mark>Use</mark> in HTML</h4>
-    <pre>      <code class="hljs language-html" data-trim="" data-line-numbers="">
+
+// 3. use it in the DOM
 &lt;button is="counter-button"&gt;Click me&lt;/button&gt;
       </code>
     </pre>
-    <div class="fragment" style="margin-top: 2em">
-      <p><strong>Live Demo:</strong></p>
-      <button is="counter-button" style="padding: 1em 2em; font-size: 1.2em">Click me</button>
-    </div>
+  </section>
+
+  <section>
+    <p><strong>Live Demo:</strong></p>
+    <button is="counter-button">Click me</button>
     <aside class="notes">Notice how we inherit all button functionality: keyboard support, form integration, ARIA roles, and all native events.</aside>
   </section>
 </section>
@@ -294,180 +319,127 @@ customElements.define('counter-button', CounterButton, {
 <section>
   <section>
     <h3>Lifecycle <mark>Callbacks</mark></h3>
+    <small align="left" balance="">
+      <ol>
+        <li class="fragment"><mark>constructor()</mark>: element created, state only, prefer no DOM or attributes</li>
+        <li class="fragment"><mark>connectedCallback()</mark>: inserted into the DOM, render and attach listeners here</li>
+        <li class="fragment"><mark>attributeChangedCallback()</mark>: an observed attribute changes, update the element accordingly</li>
+        <li class="fragment"><mark>disconnectedCallback()</mark>: removed from the DOM, clean up listeners, timers, observers</li>
+      </ol>
+    </small>
+    <aside class="notes">Understanding the lifecycle is crucial for proper resource management and avoiding memory leaks.</aside>
   </section>
+
   <section>
-    <h4><code>constructor()</code></h4>
-    <small balance="">Called when element is created</small>
-    <pre><code class="hljs javascript" data-trim="" data-line-numbers="">
+    <h4>All <mark>four lifecycle</mark> callbacks in a class</h4>
+    <pre>      <code class="hljs language-javascript" data-trim="" data-line-numbers="|1-6|8-12|14-18|20-26">
 class PixButton extends HTMLButtonElement {
   constructor() {
     super();
-    
-    // Initialize state
+    // initialize state only, no DOM here
     this.count = 0;
   }
-  
-  ...
-}
-    </code></pre>
-  </section>
-  <section>
-    <h4><code>connectedCallback()</code></h4>
-    <small balance="">Called when element is <mark>inserted into DOM</mark></small>
-    <pre><code class="hljs javascript" data-trim="" data-line-numbers="">
-class PixButton extends HTMLButtonElement {
-  ...
-  
-  // Element added to DOM
-  connectedCallback() {
-    // Initial render
-    this.render();
 
-    // Attach event listeners
+  connectedCallback() {
+    // DOM and attributes are ready: render + attach listeners
+    this.render();
     this.addEventListener('click', this.handleClick);
-    
-    // Safe to access DOM and attributes here
-    console.log(this.getAttribute('value'));
   }
-  
-  ...
-  
-}
-    </code></pre>
-  </section>
-  <section>
-    <h4><code>disconnectedCallback()</code></h4>
-    <small balance="">Called when element is <mark>removed from DOM</mark></small>
-    <pre><code class="hljs javascript" data-trim="" data-line-numbers="">
-class PixButton extends HTMLButtonElement {
-  
-  ...
-  
-  // Element removed from DOM
+
   disconnectedCallback() {
-    // Remove event listeners
+    // remove listeners and clear timers/observers
     this.removeEventListener('click', this.handleClick);
-    
-    // Clean up resources, timers, observers
     this.interval &amp;&amp; clearInterval(this.interval);
   }
-  
-  ...
-}
-    </code></pre>
-  </section>
-  <section>
-    <h4><code>attributeChangedCallback()</code></h4>
-    <small balance="">Called when <mark>observed attributes</mark> change</small>
-    <pre><code class="hljs language-javascript" data-trim="" data-line-numbers="">
-class PixButton extends HTMLButtonElement {
 
-  ...
-  
-  // Specify observed attributes
   static get observedAttributes() {
     return ['value', 'disabled'];
   }
 
-  // Called when observed attributes change
   attributeChangedCallback(name, oldValue, newValue) {
     name === 'value' &amp;&amp; this.updateValue(newValue);
   }
 }
-    </code></pre>
-  </section>
-  <section>
-    <h4>Lifecycle <mark>Timeline</mark></h4>
-    <small align="left">
-      <p>1️⃣ <mark>constructor()</mark> - Element created</p>
-      <p>2️⃣ <mark>connectedCallback()</mark> - Added to DOM</p>
-      <p>3️⃣ <mark>attributeChangedCallback()</mark> - Attributes change</p>
-      <p>4️⃣ <mark>disconnectedCallback()</mark> - Removed from DOM</p>
-    </small>
-    <aside class="notes">Understanding the lifecycle is crucial for proper resource management and avoiding memory leaks.</aside>
+
+      </code>
+    </pre>
   </section>
 </section>
 
 <section>
   <section>
     <h3><mark>Attributes</mark> vs Properties</h3>
-    <p balance="">Understanding the <mark>difference is key</mark> to effective customElements</p>
-  </section>
-  <section>
-    <h4>Attributes (HTML)</h4>
-    <pre><code class="hljs html" data-trim="" data-line-numbers="">
-&lt;button is="my-button" value="42" disabled&gt;
-  Click me
-&lt;/button&gt;
-    </code></pre>
     <small>
-      <ul class="fragment">
-        <li>Always <mark>strings</mark> (or null)</li>
-        <li>Defined in <mark>HTML</mark></li>
-        <li>Accessible via <mark>getAttribute()</mark></li>
-        <li>Trigger <mark>attributeChangedCallback()</mark></li>
-      </ul>
+      <table data-demo="attributes">
+        <tbody><tr>
+          <th scope="col">Aspect</th>
+          <th scope="col">Attributes (HTML)</th>
+          <th scope="col">Properties (JS)</th>
+        </tr>
+        <tr class="fragment">
+          <th scope="row">Type</th>
+          <td>strings (or null)</td>
+          <td>any JavaScript value</td>
+        </tr>
+        <tr class="fragment">
+          <th scope="row">Defined in</th>
+          <td>HTML markup</td>
+          <td>JavaScript</td>
+        </tr>
+        <tr class="fragment">
+          <th scope="row">Access</th>
+          <td><mark>getAttribute()</mark> / <mark>setAttribute()</mark></td>
+          <td><mark>element.prop</mark></td>
+        </tr>
+        <tr class="fragment">
+          <th scope="row">Reactivity</th>
+          <td>triggers <mark>attributeChangedCallback()</mark></td>
+          <td>does not trigger callbacks</td>
+        </tr>
+      </tbody></table>
     </small>
   </section>
   <section>
-    <h4>Properties (JavaScript)</h4>
-    <pre><code class="hljs javascript" data-trim="" data-line-numbers="">
-const button = document.querySelector('[is="my-button"]');
-
-button.value = 42;        // Number
-button.disabled = true;   // Boolean
-button.data = { foo: 'bar' }; // Object
-    </code></pre>
-    <small>
-      <ul class="fragment">
-        <li>Can be any <mark>JavaScript type</mark></li>
-        <li>Accessed in <mark>JavaScript</mark></li>
-        <li>Don't trigger callbacks automatically</li>
-      </ul>
-    </small>
-  </section>
-  <section>
-    <h4>Reflection Pattern</h4>
-    <pre><code class="hljs javascript" data-trim="" data-line-numbers="">
+    <h4>Reflection &amp; <mark>observed attributes</mark></h4>
+    <pre>      <code class="hljs language-javascript" data-trim="" data-line-numbers="|2-8|11-18">
 class MyButton extends HTMLButtonElement {
+  // reflection: keep property and attribute in sync
   get value() {
     return this.getAttribute('value');
   }
-  
+
   set value(val) {
     this.setAttribute('value', val);
   }
-}
-    </code></pre>
-    <small balance="" class="fragment">Sync properties with attributes for <mark>consistency</mark> whenever is possible/needed</small>
-  </section>
-  <section>
-    <h3>Observed Attributes &amp; <mark>Reactivity</mark></h3>
-    <p>Make your elements <mark>respond to attribute changes</mark></p>
-  </section>
-  <section>
-    <h4><mark>Declaring</mark> observed attributes</h4>
-    <pre><code class="hljs javascript" data-trim="" data-line-numbers="">
-class ColorButton extends HTMLButtonElement {
-  static get observedAttributes() {
-    return ['color', 'size'];
-  }
-  
-  attributeChangedCallback(name, oldValue, newValue) {
-    console.log(`${name} changed: ${oldValue} → ${newValue}`);
 
-    name === 'color' &amp;&amp; 
-      (this.style.backgroundColor = newValue);
-      
-    name === 'size' &amp;&amp; 
-      (this.style.fontSize = newValue);
+  // reactivity: observe only the attributes you need
+  static get observedAttributes() {
+    return ['value', 'disabled'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    name === 'value' &amp;&amp; this.updateValue(newValue);
   }
 }
-    </code></pre>
+
+      </code>
+    </pre>
   </section>
   <section>
-    <h4>Example</h4>
-    <pre><code class="hljs javascript" data-trim="" data-line-numbers="">
+    <h4>Reflection &amp; <mark>observed attributes</mark></h4>
+    <small>
+      <ul>
+        <li class="fragment">Use <mark>attributes</mark> for simple, serializable values</li>
+        <li class="fragment">Use <mark>properties</mark> for complex objects or functions</li>
+        <li class="fragment"><mark>Reflect</mark> simple properties to attributes when possible</li>
+      </ul>
+    </small>
+  </section>
+<!-- 
+  <section>
+    <h4>Example: a <mark>validated input</mark></h4>
+    <pre>
+      <code class="hljs language-javascript" data-trim data-line-numbers="|1-3|5-9|11-14|16-18|20-22">
 class ValidatedInput extends HTMLInputElement {
   static get observedAttributes() {
     return ['pattern', 'required'];
@@ -475,7 +447,7 @@ class ValidatedInput extends HTMLInputElement {
 
   validate() {
     const isValid = this.checkValidity();
-    this.classList.toggle('invalid', !isValid);
+
     this.setAttribute('aria-invalid', String(!isValid));
   }
 
@@ -483,547 +455,30 @@ class ValidatedInput extends HTMLInputElement {
     this.addEventListener('input', this.validate);
     this.validate();
   }
-  
+
   disconnectedCallback() {
     this.removeEventListener('input', this.validate);
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    this.isConnected &amp;&amp; this.validate();
+  attributeChangedCallback() {
+    this.isConnected && this.validate();
   }
 }
-    </code></pre>
-  </section>
-  <section>
-    <h4>Usage</h4>
-    <pre><code class="hljs html" data-trim="" data-line-numbers="">
-&lt;input 
-  is="validated-input" 
-  type="email" 
-  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-  required
-/&gt;
-    </code></pre>
-    <small balance="" class="fragment">Changes to <mark>pattern</mark> or <mark>required</mark> attributes automatically re-validate</small>
-  </section>
-  <section>
-    <h4>Performance <mark>tip</mark></h4>
-    <small balance="">Only observe attributes you <mark>actually need to react</mark> to</small>
-    <pre><code class="hljs javascript" data-trim="" data-line-numbers="">
-// ❌ Don't do this
-static get observedAttributes() {
-  return ['id', 'class', 'data-foo', 'data-bar', ...];
-}
-
-// ✅ Do this
-static get observedAttributes() {
-  return ['value', 'disabled']; // Only what you need
-}
-    </code></pre>
-  </section>
-  <section>
-    <h4><mark>Best</mark> Practices</h4>
-    <small>
-      <ul>
-        <li class="fragment">Use <mark>attributes</mark> for simple, serializable values</li>
-        <li class="fragment">Use <mark>properties</mark> for complex objects or functions</li>
-        <li class="fragment"><mark>Reflect</mark> simple properties to attributes <mark>when possible</mark></li>
-        <li class="fragment"><mark>Prefer native attributes</mark> element (e.g., <mark>disabled</mark>, <mark>value</mark>)</li>
-      </ul>
-    </small>
-  </section>
-</section>
-
-<section>
-  <section>
-    <h3>Extending Different <mark>Native Elements</mark></h3>
-    <p>Choose the right base element for your needs</p>
-  </section>
-  <section>
-    <h4>Extending <mark>Buttons</mark></h4>
-    <pre>      <code class="hljs javascript" data-trim="" data-line-numbers="">
-class IconButton extends HTMLButtonElement {
-  connectedCallback() {
-    const icon = this.getAttribute('icon');
-    
-    this.innerHTML = `
-      &lt;span class="icon"&gt;${icon}&lt;/span&gt;
-      ${this.textContent}
-    `;
-  }
-}
-
-customElements.define('icon-button', IconButton, {
-  extends: 'button'
-});
-      </code>
-    </pre>
-  </section>
-  <section>
-    <h4>Extending <mark>Buttons</mark></h4>
-    <pre>      <code class="hljs html" data-trim="" data-line-numbers="">
-&lt;button is="icon-button" icon="🚀"&gt;Launch&lt;/button&gt;
-&lt;button is="icon-button" icon="✨"&gt;Shine&lt;/button&gt;
-      </code>
-    </pre>
-    <div class="demo-button fragment">
-      <style>.demo-button {
-  place-content: center;
-  place-items: center;
-  gap: .5rem;
-  margin: 3rem auto;
-  display: flex;
-
-  & button[is="icon-button"] {
-    align-items: center;
-    gap: .4rem;
-    padding: 1rem 2rem;
-    font-size: 3rem;
-    display: inline-flex;
-  }
-
-  & button[is="icon-button"] .icon {
-    text-align: center;
-    width: 1em;
-    display: inline-block;
-  }
-}
-</style>
-      <button is="icon-button" icon="🚀">Launch</button>
-      <button is="icon-button" icon="✨">Shine</button>
-    </div>
-    <!-- Component definition is loaded globally from src/scripts/components/icon-button.js -->
-    <small class="fragment">✅ Inherits: click events, form submission, keyboard support, disabled state</small>
-  </section>
-  <section>
-    <h4>Extending <mark>Inputs</mark></h4>
-    <pre>      <code class="hljs javascript" data-trim="" data-line-numbers="|1-10|12-14|16-22|24-28">
-class DateInput extends HTMLInputElement {
-  connectedCallback() {
-    this.type = 'date';
-    this.setAttribute('aria-label', 'Select date');
-    
-    this.addEventListener('change', () =&gt; {
-      console.log('Date selected:', this.value);
-    });
-  }
-}
-
-customElements.define('date-input', DateInput, {
-  extends: 'input'
-});
-
-const input = document.querySelector(
-  'input[is="date-input"]'
-);
-
-const output = document.querySelector(
-  'output#date-demo-out'
-);
-
-input.addEventListener('change', () =&gt; {
-  output.textContent = input.value 
-  ? `Selected: ${input.value}`
-  : '';
-});
 
       </code>
     </pre>
-  </section>
-  <section>
-    <h4>Extending <mark>Inputs</mark></h4>
-    <div class="demo-input">
-      <style>.demo-input {
-  flex-flow: column;
-  place-content: center;
-  place-items: center;
-  gap: .75rem;
-  display: flex;
-
-  & input[is="date-input"] {
-    margin-top: 1rem;
-    padding: .5rem 1.5rem;
-    font-size: 2.5rem;
-  }
-}
-</style>
-      <input is="date-input" aria-describedby="date-demo-out">
-      <small>
-        <output id="date-demo-out" aria-live="polite">No date selected yet!</output>
-      </small>
-    </div>
-    <small class="fragment">✅ Inherits: form integration, validation, value property, focus management</small>
-    <script>const input = document.querySelector('input[is="date-input"]');
-const output = document.querySelector('output#date-demo-out');
-input.addEventListener('change', ()=>{
-    output.textContent = input.value ? `Selected: ${input.value}` : '';
-});
-
-</script>
-  </section>
-  <section>
-    <h4>Extending Semantic <mark>Elements</mark></h4>
-    <pre>      <code class="hljs javascript" data-trim="" data-line-numbers="">
-class CollapsiblePanel extends HTMLDetailsElement {
-  connectedCallback() {
-    this.setAttribute('role', 'region');
-    const header = this.querySelector('[slot="header"]');
-    
-    header?.addEventListener('click', () =&gt; {
-      this.classList.toggle('collapsed');
-      const expanded = !this.classList.contains('collapsed');
-      this.setAttribute('aria-expanded', String(expanded));
-    });
-  }
-}
-
-customElements.define('collapsible-panel', CollapsiblePanel, {
-  extends: 'details'
-});
-      </code>
-    </pre>
-  </section>
-  <section>
-    <h4>Extending Semantic <mark>Elements</mark></h4>
-    <div class="demo-details" style="margin-top: .75rem">
-      <style>.demo-details {
-  & details {
-    text-align: left;
-    border: 1px solid #cdcdcd;
-    border-radius: 6px;
-    flex-flow: column;
-    inline-size: 100%;
-    padding: .5rem .75rem;
-    display: flex;
-  }
-
-  & details > summary {
-    cursor: pointer;
-    -webkit-user-select: none;
-    user-select: none;
-    align-items: center;
-    gap: .5rem;
-    list-style: none;
-    display: flex;
-  }
-
-  & details > summary::-webkit-details-marker {
-    display: block;
-  }
-
-  & details > summary::marker {
-    content: "";
-  }
-}
-</style>
-      <details is="collapsible-panel" open="">
-        <summary><small>Toggle</small></summary>
-        <small style="margin: .5rem 0 0">This content is shown or hidden when you press Toggle.</small>
-      </details>
-    </div>
-    <!-- This demo uses native <details> and <summary> for accessibility and zero JS -->
-  </section>
-  <section>
-    <h4>Extending <mark>Links</mark></h4>
-    <pre>      <code class="hljs javascript" data-trim="" data-line-numbers="|3-10|12-17|21-23">
-class SafeLink extends HTMLAnchorElement {
-  connectedCallback() {
-    if (this.target === '_blank') {
-      const rel = new Set((this.getAttribute('rel') || '')
-        .split(/\s+/).filter(Boolean));
-        
-      rel.add('noopener');
-      rel.add('noreferrer');
-      this.setAttribute('rel', Array.from(rel).join(' '));
-    }
-    
-    const confirmMsg = this.getAttribute('data-confirm');
-    
-    (confirmMsg) &amp;&amp;
-      this.addEventListener('click', (e) =&gt; {
-        (!confirm(confirmMsg)) &amp;&amp; e.preventDefault();
-      });
-  }
-}
-
-customElements.define('safe-link', SafeLink, { 
-  extends: 'a'
-});
-      </code>
-    </pre>
-  </section>
-  <section>
-    <h4>Extending <mark>Links</mark></h4>
-    <pre>      <code class="hljs html" data-trim="" data-line-numbers="">
-&lt;a is="safe-link" href="https://example.com"
-  target="_blank"
-  data-confirm="Open external site?"&gt;
-  External link
-&lt;/a&gt;
-      </code>
-    </pre>
-    <small class="demo">
-      <a is="safe-link" href="https://example.com" target="_blank" data-confirm="Open external site?">External link</a>
-    </small>
-    <!-- Definition is loaded globally from src/scripts/components/safe-link.js -->
-  </section>
-
-  <section>
-    <h4>Choosing the right base</h4>
-    <table style="font-size: .7em">
-      <tbody><tr>
-        <th>Element</th>
-        <th>Use when you need</th>
-      </tr>
-      <tr class="fragment">
-        <td><code>&lt;button&gt;</code></td>
-        <td>Clickable actions, form submission</td>
-      </tr>
-      <tr class="fragment">
-        <td><code>&lt;input&gt;</code></td>
-        <td>User input, form data, validation</td>
-      </tr>
-      <tr class="fragment">
-        <td><code>&lt;div&gt;</code></td>
-        <td>Generic container, layout</td>
-      </tr>
-      <tr class="fragment">
-        <td><code>&lt;a&gt;</code></td>
-        <td>Navigation, links</td>
-      </tr>
-      <tr class="fragment">
-        <td><code>&lt;img&gt;</code></td>
-        <td>Image display with enhancements</td>
-      </tr>
-    </tbody></table>
-    <small balance="" class="fragment" style="margin-top: 1em">
-      💡 <strong>Just an <mark>advice</mark>:</strong> Always extend the most <mark>semantic</mark> element, the closest element to your <mark>use case</mark>
-    </small>
-  </section>
-</section>
-
-<section>
-  <section>
-    <h3>Styling <mark>Extended Elements</mark></h3>
-    <p>Practical CSS without Shadow DOM: custom properties, @layer, @scope</p>
-  </section>
-
-  <section>
-    <h4>Targeting extended elements</h4>
-    <pre>      <code class="hljs css" data-trim="" data-line-numbers="">
-/* Low specificity selectors */
-button[is="icon-button"] {
-  display: inline-flex;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-}
-
-/* States (hover, disabled) */
-button[is="icon-button"]:hover {
-  transform: scale(1.05);
-}
-
-button[is="icon-button"][disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-      </code>
-    </pre>
-    <p class="fragment">✅ Use <mark>attribute selectors</mark> and keep specificity low</p>
-  </section>
-
-  <section>
-    <h4>Custom properties for theming</h4>
-    <pre>      <code class="hljs css" data-trim="" data-line-numbers="">
-button[is="themed-button"] {
-  background: var(--button-bg, #007bff);
-  color: var(--button-color, white);
-  border-radius: var(--button-radius, 4px);
-  padding: var(--button-padding, 0.5rem 1rem);
-}
-
-.theme-dark {
-  --button-bg: #1a1a1a;
-  --button-color: #ffffff;
-}
-
-.theme-light {
-  --button-bg: #f0f0f0;
-  --button-color: #000000;
-}
-      </code>
-    </pre>
-    <pre class="fragment">      <code class="hljs html" data-trim="" data-line-numbers="">
-&lt;div class="theme-dark"&gt;
-  &lt;button is="themed-button"&gt;Dark&lt;/button&gt;
-&lt;/div&gt;
-&lt;div class="theme-light"&gt;
-  &lt;button is="themed-button"&gt;Light&lt;/button&gt;
-&lt;/div&gt;
-      </code>
-    </pre>
-  </section>
-  <section>
-    <h4>Design tokens and component contract</h4>
-    <pre>      <code class="hljs css" data-trim="" data-line-numbers="|1-7|9-23">
-:root {
-  --color-primary: #007bff;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --radius-sm: 4px;
-  --font-size-base: 1rem;
-}
-
-button[is="themed-button"] {
-  background: var(--button-bg, var(--color-primary));
-  color: var(--button-color, white);
-  padding: var(--button-padding, 
-    var(--space-sm) var(--space-md)
-  );
-  
-  border-radius:
-    var(--button-radius, var(--radius-sm));
-  
-  font-size:
-    var(--button-font-size, var(--font-size-base));
-  
-  filter: var(--button-filter, none);
-}
-      </code>
-    </pre>
-  </section>
-
-  <section>
-    <h4>Organize with @layer</h4>
-    <pre>      <code class="hljs css" data-trim="" data-line-numbers="|3-6|8-13|15-20|22-25|1">
-@layer reset, base, components, utilities, themes;
-
-/* reset */
-@layer reset {
-  *,*::before,*::after { box-sizing: border-box; }
-}
-
-/* components */
-@layer components {
-  button[is="themed-button"] {
-    padding: var(--space-sm) var(--space-md);
-  }
-}
-
-/* themes come last to win over components */
-@layer themes {
-  :root[data-theme="dark"] {
-    --button-bg: #1a1a1a; --button-color: #ffffff;
-  }
-}
-
-/* base */
-@layer base {
-  :root { --space-sm: 0.5rem; --space-md: 1rem; }
-}
-      </code>
-    </pre>
-    <p class="fragment">✅ Layers control cascade <mark>without specificity hacks</mark></p>
-  </section>
-
-  <section>
-    <h4>Encapsulate with @scope</h4>
-    <pre>      <code class="hljs html" data-trim="" data-line-numbers="">
-&lt;div class="card"&gt;
-  &lt;h3&gt;Title&lt;/h3&gt;
-  &lt;button is="themed-button"&gt;Action&lt;/button&gt;
-&lt;/div&gt;
-      </code>
-    </pre>
-    <pre class="fragment">      <code class="hljs css" data-trim="" data-line-numbers="">
-@scope (.card) {
-  :scope {
-    padding: 1rem; border: 1px solid #ddd;
-  }
-  
-  h3 {
-    margin: 0 0 0.5rem; font-size: 1.25rem;
-  }
-  
-  button[is="themed-button"] {
-    --button-bg: #e8f0ff;
-  }
-}
-      </code>
-    </pre>
-    <p class="fragment">✅ @scope styles === <mark>encapsulation</mark> <br>with <mark>no boundaries</mark></p>
-  </section>
-
-  <section>
-    <h4>State driven styling</h4>
-    <pre>      <code class="hljs css" data-trim="" data-line-numbers="|1-9|11-18">
-/* data-* states */
-button[is="toggle-button"][data-state="active"] {
-  background: var(--active-bg);
-}
-
-/* ARIA states */
-button[is="menu-button"][aria-expanded="true"] {
-  transform: rotate(180deg);
-}
-
-/* Pseudo-classes */
-input[is="validated-input"]:invalid {
-  border-color: var(--error-color);
-}
-
-input[is="validated-input"]:focus {
-  outline: 2px solid var(--focus-color); outline-offset: 2px;
-}
-      </code>
-    </pre>
-  </section>
-  <!-- <section>
-    <h4>Dark mode and preferences</h4>
-    <pre>
-      <code class="hljs css" data-trim data-line-numbers>
-/* System preference as default */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --bg-primary: #1a1a1a; --text-primary: #ffffff;
-  }
-}
-
-/* Manual override */
-:root[data-theme="dark"] {
-  --bg-primary: #1a1a1a; --text-primary: #ffffff;
-}
-      </code>
-    </pre> -->
-  <!-- <pre class="fragment">
-      <code class="hljs javascript" data-trim data-line-numbers>
-class ThemeToggle extends HTMLButtonElement {
-  connectedCallback() {
-    this.textContent = '🌙';
-    this.addEventListener('click', () => {
-      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-      document.documentElement.dataset.theme = next;
-      this.textContent = next === 'light' ? '🌙' : '☀️';
-    });
-  }
-}
-customElements.define('theme-toggle', ThemeToggle, { extends: 'button' });
-      </code>
-    </pre> -->
-  <!-- </section> -->
-  <!-- <section>
-    <h4>Usage</h4>
-    <pre>
-      <code class="hljs html" data-trim data-line-numbers>
-&lt;button is="theme-toggle"&gt;🌙&lt;/button&gt;
-&lt;button is="themed-button"&gt;Themed Button&lt;/button&gt;
-      </code>
-    </pre>
-    <p class="fragment">✅ Children inherit tokens; layers and scope orchestrate overrides</p>
+    <small class="fragment">Changes to <mark>pattern</mark> or <mark>required</mark> automatically re-validate</small>
   </section> -->
 </section>
 
+<!-- <include src="./slides/topics/_05-extending-natives.html"></include> -->
 <section>
+  <section>
+    <h3>
+      Some <mark>questions</mark> <br>
+      I expect from you...
+    </h3>
+  </section>
   <section>
     <h4>
       Expected Question #1: <br>
@@ -1056,7 +511,7 @@ customElements.define('theme-toggle', ThemeToggle, { extends: 'button' });
   </section>
   <section>
     <figure>
-      <img src="hans-gruber-enough-jokes.d38cd456.gif" alt="Hans Gruber saying: 'Enough jokes'" width="80%">
+      <img src="/hans-gruber-enough-jokes.1f923d7c.gif" alt="Hans Gruber saying: 'Enough jokes'" width="80%">
     </figure>
   </section>
   <section>
@@ -1110,7 +565,7 @@ export class Button extends HTMLButtonElement {
   </section>
   <section>
     <figure>
-      <img src="john-mc-clane-oops.b0a5827a.gif" alt="John McClane saying: 'Oops'" width="80%">
+      <img src="/john-mc-clane-oops.1de6e285.gif" alt="John McClane saying: 'Oops'" width="80%">
     </figure>
   </section>
   <section>
@@ -1161,7 +616,7 @@ export function applyMixins(component) {
   </section>
   <section>
     <figure>
-      <img src="john-mc-clane-oops.b0a5827a.gif" alt="John McClane saying: 'Oops'" width="80%">
+      <img src="/john-mc-clane-oops.1de6e285.gif" alt="John McClane saying: 'Oops'" width="80%">
     </figure>
   </section>
   <section>
@@ -1215,8 +670,23 @@ class Button extends HTMLButtonElement {
   </section>
   <section>
     <figure>
-      <img src="john-mc-clane-oops.b0a5827a.gif" alt="John McClane saying: 'Oops'" width="80%">
+      <img src="/john-mc-clane-oops.1de6e285.gif" alt="John McClane saying: 'Oops'" width="80%">
     </figure>
+  </section>
+  <section>
+    <h4><mark>Lifecycle</mark> methods</h4>
+    <pre>      <code class="hljs javascript" data-trim="">
+        element.addEventListener('eventname', eventHandler);
+      </code>
+    </pre>
+  </section>
+  <section>
+    <h4>The <mark>handleEvent</mark> pattern</h4>
+    <small balance="">
+      From <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#parameters" target="_blank">MDN</a>:
+      <em>The object that receives a notification (an object that implements the Event interface) when an event of the specified type occurs.
+        <u>This must be null, <mark>an object with a handleEvent() method</mark>, or a JavaScript function.</u> See The event listener callback for details on the callback itself.</em>
+    </small>
   </section>
   <section>
     <h4><mark>Lifecycle</mark> methods?</h4>
@@ -1249,7 +719,7 @@ export function buildLifecycleMethods(component) {
   </section>
   <section>
     <figure>
-      <img src="john-mc-clane-oops.b0a5827a.gif" alt="John McClane saying: 'Oops'" width="80%">
+      <img src="/john-mc-clane-oops.1de6e285.gif" alt="John McClane saying: 'Oops'" width="80%">
     </figure>
   </section>
   <section>
@@ -1298,14 +768,18 @@ class BoundInput extends HTMLInputElement {
     if (!this._key) return;
     
     this._unsub = store.subscribe(this._key, (v) =&gt; {
-      if (this.value !== String(v ?? '')) this.value = String(v ?? '');
+      if (this.value !== String(v ?? '')) {
+        this.value = String(v ?? '');
+      }
     });
     
     this.addEventListener('input', this);
   }
   
   handleEvent(e) {
-    if (e.type === 'input' &amp;&amp; this._key) store.state[this._key] = this.value;
+    if (e.type === 'input' &amp;&amp; this._key) {
+      store.state[this._key] = this.value;
+    }
   }
   
   disconnectedCallback() {
@@ -1338,23 +812,34 @@ class BoundText extends HTMLSpanElement {
   <section>
     <h4>Reactivity &amp; two-way data binding</h4>
     <pre>      <code class="hljs html" data-trim="" data-line-numbers="">
-&lt;label&gt;
-  Name:
-  &lt;input is="bound-input" type="text" data-bind="name" placeholder="Type your name" /&gt;
-&lt;/label&gt;
-&lt;label&gt;
-  Nick:
-  &lt;input is="bound-input" type="text" data-bind="nick" placeholder="Type your nick" /&gt;
-&lt;/label&gt;
-&lt;p&gt;Hello, &lt;span is="bound-text" data-bind="name"&gt;&lt;/span&gt; aka &lt;span is="bound-text" data-bind="nick"&gt;&lt;/span&gt;!&lt;/p&gt;
+        &lt;label&gt;
+          Name:
+          &lt;input is="bound-input" type="text" data-bind="name" placeholder="Type your name" /&gt;
+        &lt;/label&gt;
+        &lt;label&gt;
+          Nick:
+          &lt;input is="bound-input" type="text" data-bind="nick" placeholder="Type your nick" /&gt;
+        &lt;/label&gt;
+        &lt;p&gt;
+          Hello,
+          &lt;span is="bound-text" data-bind="name"&gt;&lt;/span&gt;
+          aka &lt;span is="bound-text" data-bind="nick"&gt;&lt;/span&gt;!
+        &lt;/p&gt;
       </code>
     </pre>
-    <pre>      <code class="hljs javascript" data-trim="" data-line-numbers="|7-8">
+  </section>
+  <section>
+    <h4>Reactivity &amp; two-way data binding</h4>
+    <pre>      <code class="hljs javascript" data-trim="" data-line-numbers="">
 // Store singleton for the page
 const store = createStore({ name: '', nick: '' });
 
-customElements.define('bound-input', BoundInput, { extends: 'input' });
-customElements.define('bound-text', BoundText, { extends: 'span' });
+customElements.define('bound-input', BoundInput, { 
+  extends: 'input'
+});
+customElements.define('bound-text', BoundText, { 
+  extends: 'span' 
+});
 
 // Yippie Kai Yay... motherf... 
 // vanilla reactivity &amp; two-way data binding!
@@ -1578,6 +1063,265 @@ document.getElementById('dec')?.addEventListener('click', () => state.count--);
 </section>
 
 
+<!-- Store, DOM Parts, Template Engine, Demo -->
+<section>
+  <h3>Can we go <mark>further</mark>?</h3>
+</section>
+<section>
+  <!-- Proxy store -->
+  <section data-topic="store" data-menu-title="Store theory">
+  <h3>The <mark>Store</mark></h3>
+</section>
+
+<section data-topic="store" data-menu-title="Store theory">
+  <h4 balance="">What a Store <mark>actually is</mark>?</h4>
+  <small balance="" class="fragment">
+    A store is <mark>a shared state tree</mark> plus a <mark>notification contract</mark>: one source of <mark>truth</mark> for the data, and a predictable way to tell the rest of the app when that
+    data <mark>changes</mark>.
+  </small>
+  <!-- <small balance class="fragment">
+    In this demo it is built from three boring parts: a <mark>Proxy</mark> that intercepts writes, <mark>Reflect</mark> that performs the real operation, and a browser
+    <mark>CustomEvent</mark> that announces what happened.
+  </small> -->
+  <aside class="notes">The store is not the renderer and it is not the business logic: it is the stable place where both meet the current state.</aside>
+</section>
+
+<section data-topic="store" data-menu-title="Proxy + Reflect">
+  <h4 balance=""><mark>Proxy</mark> watches, <mark>Reflect</mark> does the work</h4>
+  <pre>    <code data-trim="" data-line-numbers="|2-5|12-15|14|16-21|19|24" class="hljs javascript">
+class Store {
+  constructor(initialState) {
+    this.target = deepClone(initialState);
+    this.state = this.#createProxy(this.target, []);
+  }
+
+  #createProxy(target, path) {
+    if (!isObject(target)) return target;
+    if (this.proxyCache.has(target)) return this.proxyCache.get(target);
+
+    const proxy = new Proxy(target, {
+      get: (raw, key) =&gt; {
+        const value = Reflect.get(raw, key);
+        return isObject(value) ? this.#createProxy(value, [...path, key]) : value;
+      },
+      set: (raw, key, value) =&gt; {
+        const old = raw[key];
+        const result = Reflect.set(raw, key, value);
+        if (old !== prepared) this.#emitChange([...path, key], old, value);
+        return result;
+      },
+    });
+
+    return proxy;
+  }
+}
+    </code>
+  </pre>
+</section>
+
+  <section data-topic="store" data-menu-title="CustomEvent">
+  <h4 balance=""><mark>emitChange()</mark>: the store speaks with <mark>CustomEvent</mark></h4>
+  <pre>    <code data-trim="" data-line-numbers="|3-7|9-12" class="hljs javascript">
+#emitChange(path, oldValue, newValue) {
+  // A single, explicit event for every successful write.
+  const detail = {
+    path: pathToString(path),
+    oldValue: deepClone(oldValue),
+    newValue: deepClone(newValue),
+  };
+
+  // EventTarget keeps persistence, logging and the
+  // custom elements decoupled from the store itself.
+  this.events.dispatchEvent(
+    new CustomEvent("store:change", { detail }),
+  );
+}
+    </code>
+  </pre>
+</section>
+
+</section>
+
+<section>
+  <!-- DOM Parts -->
+  <section data-topic="dom-parts" data-menu-title="DOM Part theory">
+  <h3>The <mark>DOM Parts</mark></h3>
+</section>
+
+<section data-topic="dom-parts" data-menu-title="DOM Part theory">
+  <h4 balance="">What a <mark>DOM Part</mark> actually is?</h4>
+  <small balance="">
+    A DOM Part is not a component and not even a DOM node: it's a key-valued <mark>update slot</mark> inside a rendered template, keeps a reference to the related DOM node.
+  </small>
+</section>
+<!-- 
+<section data-topic="dom-parts" data-menu-title="DOM Part theory">
+  <h4 balance>Eureka!</h4>
+  <small balance>
+    Each part updates <mark>locally</mark>: no virtual DOM, no full re-render...
+    <span class="fragment">we <mark>don't need</mark> DOM traversing anymore!!</span>
+  </small>
+  </aside>
+</section> -->
+
+  <section data-topic="dom-parts" data-menu-title="Parts overview">
+  <h4 balance="">The DOM <mark>parts</mark> used by the engine</h4>
+  <small balance="">
+    <ol>
+      <li class="fragment"><mark>ChildNodePart</mark>: DOM nodes (text, elements, nested templates)</li>
+      <li class="fragment"><mark>AttributePart</mark>: HTML attributes and the <mark>model</mark> binding</li>
+      <li class="fragment"><mark>PropertyPart</mark>: JavaScript properties (eg. <mark>.value</mark>, <mark>.checked</mark>)</li>
+      <li class="fragment"><mark>EventPart</mark>: Event listeners (eg. <mark>@click</mark>)</li>
+      <li class="fragment"><mark>RangePart</mark>: The start/end markers around a dynamic region for text interpolation</li>
+    </ol>
+  </small>
+</section>
+
+</section>
+
+<section>
+  <!-- Template engine -->
+  <section data-topic="template-engine" data-menu-title="html tag">
+  <h3>The <mark>Template Engine</mark></h3>
+</section>
+
+<section data-topic="template-engine" data-menu-title="html tag">
+  <h4 balance=""><mark>html</mark> tagged templates + <mark>render</mark></h4>
+  <small balance="" class="fragment"> A template is just a tagged template literal. <mark>render</mark> mounts it into a container and, on the next call, updates only the <mark>parts</mark> that changed. </small>
+  <pre class="fragment">    <code data-trim="" class="hljs javascript">
+const view = html`
+  <h1>${ title }</h1>
+  &lt;button @click=${() =&gt; store.state.count += 1}&gt;
+    +1
+  &lt;/button&gt;
+`;
+    </code>
+  </pre>
+</section>
+
+  <section data-topic="template-engine" data-menu-title="Custom elements">
+  <h4 balance="">A template inside a <mark>custom element</mark></h4>
+  <small balance="">
+    A component declares <mark>metadata</mark>, a <mark>static {}</mark> registration and a <mark>render(state)</mark>. The decorator wires live rendering on <mark>store:change</mark>: no manual
+    listeners, no <code>innerHTML</code>.
+  </small>
+</section>
+
+<section data-topic="template-engine" data-menu-title="Custom elements">
+  <pre>    <code data-trim="" data-line-numbers="|6-10|12-14" class="hljs javascript">
+import { html } from "@/core/index.js";
+import { componentDecorator } from "@/lib/component-decorator.js";
+
+/** Summary stat cards. */
+export class CebStatsRow extends HTMLElement {
+  static name = "ceb-stats-row";
+
+  static {
+    componentDecorator("StatsRow", CebStatsRow);
+  }
+
+  render(state) {
+    return html`&lt;p&gt;Total: ${state.todos.length}&lt;/p&gt;`;
+  }
+}
+
+    </code>
+  </pre>
+  <small balance="" class="fragment">The engine diffs by <mark>part</mark>: only the changed nodes are committed, and inputs keep focus and caret.</small>
+</section>
+
+  <section data-topic="template-engine" data-menu-title="for + if">
+  <h4 balance=""><mark>&lt;for&gt;</mark> and <mark>&lt;if&gt;</mark> blocks</h4>
+  <small balance="" class="fragment">
+    Each block keeps its own <mark>DOM part</mark>, so the engine updates the existing nodes in place: focus, caret and form state survive the re-render. Inner markup uses <code>{{ }}</code>, and
+    there is no second syntax.
+  </small>
+</section>
+
+<section data-topic="template-engine" data-menu-title="for + if">
+  <pre>    <code class="hljs language-html" data-trim="" data-line-numbers="|1-4|6-9">
+&lt;!-- one block per item, keyed by id --&gt;
+&lt;for each="todo in todos"&gt;
+  &lt;li&gt;&lt;ceb-todo-item data-id="{{ todo.id }}"&gt;&lt;/ceb-todo-item&gt;&lt;/li&gt;
+&lt;/for&gt;
+
+&lt;!-- conditional block --&gt;
+&lt;if condition="isEmpty"&gt;
+  &lt;p&gt;Nothing matches the current filters yet.&lt;/p&gt;
+&lt;/if&gt;
+    </code>
+  </pre>
+  <aside class="notes">The engine parses &lt;for&gt; and &lt;if&gt; regions and reconciles them as DOM parts, keyed by item id.</aside>
+</section>
+
+  <section data-topic="template-engine" data-menu-title="Bindings">
+  <h4 balance=""><mark>Declarative</mark> form bindings</h4>
+  <small balance="">
+    The store is the single source of truth: <mark>value</mark> / <mark>checked</mark> read it, <mark>@input</mark> / <mark>@change</mark> write it. No <mark>model</mark> directive, no hidden two-way
+    magic.
+  </small>
+</section>
+
+<section data-topic="template-engine" data-menu-title="Bindings">
+  <pre>    <code data-trim="" data-line-numbers="|1-5|7-11|13-19" class="hljs language-html">
+      &lt;!-- input: value reads, @input writes --&gt;
+      &lt;input value="${todo.title}"
+        @input=${(e) =&gt; updateTodo(id, { 
+          title: e.currentTarget.value 
+        })} /&gt;
+
+      &lt;!-- checkbox: checked + @change --&gt;
+      &lt;input type="checkbox" checked=${todo.completed}
+        @change=${(e) =&gt; updateTodo(id, { 
+          completed: e.currentTarget.checked 
+        })} /&gt;
+
+      &lt;!-- select: data-value applied after the options render --&gt;
+      &lt;select data-value="${todo.priority}"
+      @change=${(e) =&gt; updateTodo(id, { 
+          priority: e.currentTarget.value 
+        })}&gt;
+        <!-- ...priorityOptions -->
+      &lt;/select&gt;
+    </code>
+  </pre>
+</section>
+
+</section>
+
+<section>
+  <!-- Todo demo -->
+  <section data-topic="demo" data-menu-title="App">
+  <h3 balance=""><mark>Demo Time</mark></h3>
+  <p balance="">Open the <a href="https://pixu1980.github.io/custom-elements-and-beyond-demo/" target="_blank" rel="noreferrer">here</a>.</p>
+</section>
+<section data-topic="demo" data-menu-title="App">
+  <h4>All this <mark>takes just</mark>...</h4>
+  <figure class="fragment">
+    <img src="/build.1f7b91da.png" alt="" width="85%">
+  </figure>
+</section>
+<section data-topic="demo" data-menu-title="App">
+  <h2><mark>App</mark>lause!</h2>
+</section>
+
+  <section data-topic="demo" data-menu-title="Takeaways">
+  <h4 balance="">What the demo really <mark>proves</mark>?</h4>
+  <small>
+    <ul>
+      <li class="fragment">The <mark>store</mark> is the truth box, and every component keeps reading from the same <mark>Proxy</mark> tree</li>
+      <li class="fragment"><mark>store:change</mark> is the bell that wakes each custom element's <mark>render(state)</mark> after every mutation</li>
+      <li class="fragment"><mark>&lt;for&gt;</mark> and <mark>&lt;if&gt;</mark> are not cute helpers; they are the practical fingers that touch lists and conditionals all day long</li>
+      <li class="fragment">
+        A <mark>tiny runtime</mark> can power a <mark>surprisingly rich interface</mark>, but the real product question is still how much of that runtime you want to <mark>own yourself</mark>
+      </li>
+    </ul>
+  </small>
+</section>
+
+</section>
+
+
 <!-- Patterns & Use Cases: Slides 13-24 -->
 <!-- <include src="./slides/topics/_10-composition-patterns.html"></include>
 <include src="./slides/topics/_11-binding.html"></include>
@@ -1615,6 +1359,7 @@ document.getElementById('dec')?.addEventListener('click', () => state.count--);
 <include src="./slides/topics/_41-wrappers-and-adapters.html"></include>
 <include src="./slides/topics/_42-integration-recap.html"></include>
 <include src="./slides/topics/_43-future-features.html"></include> -->
+
 <section>
   <section>
     <h3>Resources and <mark>Links</mark></h3>
@@ -1679,8 +1424,8 @@ document.getElementById('dec')?.addEventListener('click', () => state.count--);
   <comparison links="">
     <figure>
       <picture>
-        <source srcset="slides.e301738c.webp" type="image/webp">
-        <img src="slides.ac9e99b7.png" alt="Slides">
+        <source srcset="/slides.edab5ca8.webp" type="image/webp">
+        <img src="/slides.1deb7d95.png" alt="Slides">
       </picture>
       <figcaption>
         <small>Slides</small>
@@ -1688,8 +1433,8 @@ document.getElementById('dec')?.addEventListener('click', () => state.count--);
     </figure>
     <figure>
       <picture>
-        <source srcset="slides-repo.257880bd.webp" type="image/webp">
-        <img src="slides-repo.81dcbfa4.png" alt="Slides Repo on Github">
+        <source srcset="/slides-repo.0d605d4e.webp" type="image/webp">
+        <img src="/slides-repo.fe295744.png" alt="Slides Repo on Github">
       </picture>
       <figcaption>
         <small>Slides Repo</small>
@@ -1748,7 +1493,7 @@ document.getElementById('dec')?.addEventListener('click', () => state.count--);
 
   <section class="slide-outro-taf" data-transition="convex">
   <!-- <div sr-only data-menu-title>That's All Folks</div> -->
-  <audio data-autoplay="" src="taf.f9b512b9.mp3"></audio>
+  <audio data-autoplay="" src="/taf.d3b3531a.mp3"></audio>
   <div class="taf-wrapper">
     <div class="circles">
       <div class="circle one"></div>
@@ -1761,8 +1506,8 @@ document.getElementById('dec')?.addEventListener('click', () => state.count--);
     </div>
     <figure speaker="">
       <picture>
-        <source srcset="pixu.ea6d4c65.webp" type="image/webp">
-        <img src="pixu.06482de6.jpg" alt="Pixu">
+        <source srcset="/pixu.8dc4bcd7.webp" type="image/webp">
+        <img src="/pixu.8cd71433.jpg" alt="Pixu">
       </picture>
     </figure>
     <svg style="isolation: isolate" viewBox="0 0 566.44 157.5">
@@ -1821,12 +1566,12 @@ document.getElementById('dec')?.addEventListener('click', () => state.count--);
       </div>
       <a brand="" href="https://www.devdojo.it" target="_blank" rel="noopener noreferrer">
   <figure>
-    <img src="dev-dojo.3f2f430c.png" alt="Dev Dojo IT Logo">
+    <img src="/dev-dojo.2f055838.png" alt="Dev Dojo IT Logo">
   </figure>
 </a>
 
     </main>
-    <script src="talk-custom-elements-and-beyond.d7017e77.js" type="module"></script>
+    <script src="/talk-custom-elements-and-beyond.c6396971.js" type="module"></script>
   
 
 </body></html>
